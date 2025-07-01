@@ -5,9 +5,9 @@ import { fields } from './index';
 
 <template>
 
-<formElement>
-    <fields.textInput :conf="{text:'test', id: '0'}"></fields.textInput>
-    <fields.dateInput :conf="{text:'test', id: '1'}"></fields.dateInput>
-</formElement>
+    <formElement>
+        <fields.textInput :conf="{ text: 'test', id: '0' }"></fields.textInput>
+        <fields.dateInput :conf="{ text: 'test', id: '1' }"></fields.dateInput>
+    </formElement>
 
 </template>
