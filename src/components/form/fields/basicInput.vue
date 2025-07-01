@@ -1,5 +1,6 @@
 <template>
-    <input :type="BasicInputObj.type">
+    <label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
+    <input :type="BasicInputObj.type" :id="BasicInputObj.id">
 </template>
 <script setup lang="ts">
 import type { PropType } from 'vue';
@@ -29,7 +30,6 @@ class BasicInput extends DefaultElement {
     }
 
 }
-console.log(props)
 //retriving information for a basic input
 const BasicInputObj = new BasicInput(props.conf?.text, props.conf?.id, props.conf?.type)
 
