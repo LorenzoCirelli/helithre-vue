@@ -1,4 +1,4 @@
-export const validatedResult = (val: string | number | boolean | undefined | Event | EventTarget | null | HTMLFormControlsCollection) => {
+export const validatedResult = (val: any) => {
   if (val === undefined) {
     throw new Error("The value was undefined");
   } else if (val === null) {

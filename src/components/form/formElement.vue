@@ -1,16 +1,25 @@
 <template>
-    <form @submit.prevent="getFormValues">
+    {{ formValues }}
+    <form @change.prevent="getFormValues" @submit.prevent="getFormValues">
         <slot />
-        <input type="submit" value="Invia">
     </form>
 </template>
 <script setup lang="ts">
 import { validatedResult } from '../../composable/utils';
 
-function getFormValues(submitEvent: Event) {
+import { reactive } from 'vue'
 
-    const event = validatedResult(submitEvent) as Event
-    const form = (validatedResult(validatedResult(event.target).elements)) as HTMLFormControlsCollection
-    console.log(form)
+const formValues = reactive(new Map<string, string>())
+
+// Handler generico per tutti gli input del form
+function getFormValues(event: Event) {
+    const target = validatedResult(event.target) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    if (target && target.name) {
+        validatedResult(target.value)
+        formValues.set(target.name, target.value)
+    }
+    console.log('formValues:', formValues)
 }
+
+
 </script>
