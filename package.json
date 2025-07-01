@@ -3,15 +3,30 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/helitre-vue.umd.cjs",
+  "module": "./dist/helitre-vue.js",
+  "exports": {
+    ".": {
+      "import": "./dist/helitre-vue.js",
+      "require": "./dist/helitre-vue.umd.cjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build && vue-tsc --emitDeclarationOnly",
+    "types": "vue-tsc ",
     "preview": "vite preview"
   },
   "dependencies": {
     "vue": "^3.5.17"
   },
   "devDependencies": {
+    "@types/node": "^24.0.8",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",
     "typescript": "~5.8.3",
