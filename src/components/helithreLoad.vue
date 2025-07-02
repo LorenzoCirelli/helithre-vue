@@ -1,5 +1,5 @@
 <template>
-    <component :is="wrapperInUse.compType"></component>
+    <component :is="wrapperInUse.compType" :childrens="wrapperInUse.compProps"></component>
 </template>
 <script lang="ts" setup>
 import { defineComponent, type Component, type PropType } from 'vue';

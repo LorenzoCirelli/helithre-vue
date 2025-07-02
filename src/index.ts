@@ -1,11 +1,9 @@
 // Manage export of components
-import * as fields from './components/form/fields/fields'
-import formElement from "./components/form/formElement.vue"
+import { defineAsyncComponent } from 'vue';
+import * as form from './components/form/form'
 import * as wrapper from './components/wrapper/wrapper'
+const helithreLoad = defineAsyncComponent(() => import("./components/helithreLoad.vue"));
 
-import helithreLoad from './components/helithreLoad.vue'
-
-export {fields}
+export {form}
 export {wrapper}
-export {formElement}
 export {helithreLoad}

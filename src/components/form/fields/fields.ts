@@ -1,5 +1,5 @@
-import { defineComponent, h, type PropType } from "vue";
-import basicInput from "./basicInput.vue";
+import { defineAsyncComponent, defineComponent, h, type PropType } from "vue";
+const basicInput = defineAsyncComponent(() => import("./basicInput.vue"));
 import type { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
 import { BasicFieldTypeEnum } from "../../../types/fields/basicField";
 
