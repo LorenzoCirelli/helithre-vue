@@ -1,13 +1,17 @@
 <script setup lang="ts">
-import { formElement } from './index';
-import { fields } from './index';
+import { helithreLoad } from './index';
 </script>
 
 <template>
-
-    <formElement>
-        <fields.textInput :conf="{ text: 'test', id: '0' }"></fields.textInput>
-        <fields.dateInput :conf="{ text: 'test', id: '1' }"></fields.dateInput>
-    </formElement>
-
+    <helithreLoad :helithreJson="{
+    name:'testForm',
+    wrapper:'form',
+    childrens: [
+        {
+            text:'Primo input exempio',
+            id: '0',
+            type:'number'
+        }
+    ]
+}"></helithreLoad>
 </template>

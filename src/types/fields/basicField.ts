@@ -11,4 +11,5 @@ type BasicFieldType =
 
 export interface BasicFieldInterfaceComponent extends DefaultElementType {
   type?: BasicFieldType;
+  value?: string
 }
