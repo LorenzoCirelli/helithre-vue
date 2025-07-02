@@ -1,5 +1,4 @@
 <template>
-    {{ formValues }}
     <form @change.prevent="getFormValues" @submit.prevent="getFormValues">
         <slot />
     </form>

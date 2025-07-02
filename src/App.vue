@@ -11,6 +11,11 @@ import { helithreLoad } from './index';
             text:'Primo input exempio',
             id: '0',
             type:'number'
+        },
+        {
+            text:'Secondo input exempio',
+            id: '1',
+            type:'date'
         }
     ]
 }"></helithreLoad>

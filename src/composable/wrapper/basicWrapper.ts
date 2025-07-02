@@ -6,11 +6,22 @@ export class BasicWrapper {
   protected loadMap: Map<string, Object>;
   constructor(childrens: Array<BasicFieldInterfaceComponent>) {
     this.loadMap = new Map();
-    this.parseChildrens(childrens)
+    this.parseChildrens(childrens);
   }
 
   get getLoadMap() {
     return this.loadMap;
+  }
+
+  get getLoadArray() {
+    const elementToLoad: BasicFieldInterfaceComponent[] = Array.from(
+      this.loadMap,
+      ([key, value]) => ({
+        id: key,
+        ...value,
+      })
+    ) as BasicFieldInterfaceComponent[]
+    return elementToLoad;
   }
 
   set setLoadMap(loadItem: load.LoadType) {
@@ -18,8 +29,11 @@ export class BasicWrapper {
   }
 
   parseChildrens(childrens: Array<BasicFieldInterfaceComponent>) {
-    childrens.forEach(children => {
-      this.setLoadMap = {id: children.id, value: {text: children.text, type: children.type}}
+    childrens.forEach((children) => {
+      this.setLoadMap = {
+        id: children.id,
+        value: { text: children.text, type: children.type },
+      };
     });
   }
 }
