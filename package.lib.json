@@ -1,0 +1,15 @@
+{
+  "name": "helithre-vue",
+  "version": "1.0.0",
+  "main": "./helithre-vue.umd.cjs",
+  "module": "./helithre-vue.js",
+  "exports": {
+    ".": {
+      "import": "./helithre-vue.js",
+      "require": "./helithre-vue.umd.cjs"
+    }
+  },
+  "peerDependencies": {
+    "vue": "^3.0.0"
+  }
+}
