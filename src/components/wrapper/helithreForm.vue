@@ -1,12 +1,13 @@
 <template>
-    <form-element>
+    <form-element @formChange="formChangeEventHandler">
         <component :is="componentsMap.get(validatedResult(children.type))" :conf="children"
-            v-for="children, key in childrens?.getLoadArray" :key="key"></component>
+            v-for="children, key in childrens?.getLoadArray" :key="key"
+></component>
     </form-element>
 </template>
 
 <script lang="ts" setup>
-import type { PropType } from 'vue'
+import { onMounted, type PropType } from 'vue'
 import { validatedResult } from '../../composable/utils'
 import { BasicWrapper, SaveWrapper } from '../../composable/wrapper/basicWrapper'
 import { form } from '../../index'
@@ -19,6 +20,13 @@ const props = defineProps({
     },
     name: { type: String }
 })
-console.log(componentsMap)
-document.title = validatedResult(props.name)
+
+onMounted(() => {
+  document.title = validatedResult(props.name)
+})
+
+//read form edit
+const formChangeEventHandler = (e) => {
+    console.log(e)
+}
 </script>

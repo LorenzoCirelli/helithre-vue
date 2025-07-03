@@ -6,18 +6,17 @@
 <script setup lang="ts">
 import { validatedResult } from '../../composable/utils';
 
-import { reactive } from 'vue'
-
-const formValues = reactive(new Map<string, string>())
+const emitChange = defineEmits(['formChange']);
 
 // Handler generico per tutti gli input del form
 function getFormValues(event: Event) {
     const target = validatedResult(event.target) as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
     if (target && target.name) {
         validatedResult(target.value)
-        formValues.set(target.name, target.value)
+        const formChangeValue = {id:target.name, value:target.value}
+        console.log(formChangeValue)
+        emitChange('formChange', formChangeValue)
     }
-    console.log('formValues:', formValues)
 }
 
 
