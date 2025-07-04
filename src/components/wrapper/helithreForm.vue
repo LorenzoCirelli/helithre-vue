@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, type PropType } from 'vue'
+import { type PropType } from 'vue'
 import { validatedResult } from '../../composable/utils'
 import { SaveWrapper } from '../../composable/wrapper/basicWrapper'
 import { form } from '../../index'
@@ -19,10 +19,6 @@ const props = defineProps({
         type: Object as PropType<SaveWrapper>
     },
     name: { type: String },
-})
-
-onMounted(() => {
-    document.title = validatedResult(props.name)
 })
 
 //read form edit
