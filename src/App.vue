@@ -4,29 +4,39 @@ import { helithreLoad } from './index';
 
 <template>
     <helithreLoad :helithreJson="{
-    name:'testForm',
-    wrapper:'form',
-    childrens: [
-        {
-            text:'Primo input exempio',
-            id: '0',
-            type:'text'
-        },
-        {
-            text:'Secondo input exempio',
-            id: '1',
-            type:'date',
-        }
-    ],
-    responses: [
-        {
-            id: '0',
-            value: 'Test load'
-        },
-                {
-            id: '1',
-            value: 'Test d'
-        }
-    ]
-}"></helithreLoad>
+        name: 'RegisterForm',
+        wrapper: 'form',
+        childrens: [
+            {
+                text: 'Nome',
+                id: 'user_name',
+                type: 'text'
+            },
+            {
+                text: 'Cognome',
+                id: 'user_surname',
+                type: 'text',
+            },
+            {
+                text: 'Password',
+                id: 'user_password',
+                type: 'password',
+            },
+            {
+                text: 'Favourite color',
+                id: 'user_favorite_color',
+                type: 'color',
+            }
+        ],
+        responses: [
+            {
+                id: 'user_name',
+                value: 'Lorenzo'
+            },
+            {
+                id: 'user_surname',
+                value: 'Test d'
+            }
+        ]
+    }"></helithreLoad>
 </template>
