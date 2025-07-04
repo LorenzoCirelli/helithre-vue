@@ -1,6 +1,7 @@
 <template>
     <form-element @formChange="formChangeEventHandler">
-        <component :is="componentsMap.get(validatedResult(children.type))" :conf="children" :response= "derivatedChildrens?.responseForId(children.id)"
+        <component :is="componentsMap.get(validatedResult(children.type))" :conf="children"
+            :response="derivatedChildrens?.responseForId(children.id)"
             v-for="children, key in derivatedChildrens?.getLoadArray" :key="key">
         </component>
     </form-element>
@@ -20,12 +21,20 @@ const props = defineProps({
     },
     name: { type: String },
 })
+const derivatedChildrens = props.derivatedChildrens;
 
 //read form edit
-const formChangeEventHandler = (e: { id: string, value: string }) => {
-    if (props && props.derivatedChildrens) {
-        props.derivatedChildrens.setSaveMap = { id: e.id, value: e.value };
-    }
-    console.log(props.derivatedChildrens)
+const formChangeEventHandler = (formData: FormData) => {
+    derivatedChildrens?.clearSaved();
+    formData.forEach((value, key) => {
+        const formChangeValue = { id: key, value: String(value) };
+        if (derivatedChildrens && derivatedChildrens?.isItemToSave(formChangeValue.id, formChangeValue.value)) {
+            derivatedChildrens.setResponsesMap = { id: formChangeValue.id, value: formChangeValue.value };
+            derivatedChildrens.setSaveMap = { id: formChangeValue.id, value: formChangeValue.value };
+        }
+    });
+    console.log(derivatedChildrens?.getResponsesMap)
+    console.log(derivatedChildrens?.getSaveMap)
+
 }
 </script>

@@ -83,11 +83,28 @@ export class SaveWrapper extends BasicWrapper {
     if (resForId != undefined) {
       return resForId;
     } else {
-      return null
+      return null;
+    }
+  }
+
+  isItemToSave(id: string, value: string) {
+    const response = this.responseForId(id);
+    if (response != null && response != value) {
+      return true;
+    } else if (response == null) {
+      return true;
+    } else {
+      return false;
     }
   }
 
   set setResponsesMap(response: BaseResponse) {
-    this.responsesMap.set(response.id, response.value);
+    if (response.value.length > 0) {
+      this.responsesMap.set(response.id, response.value);
+    }
+  }
+
+  clearSaved() {
+    this.saveMap = new Map();
   }
 }
