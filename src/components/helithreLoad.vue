@@ -1,7 +1,7 @@
 <template>
   <component
     :is="wrapperInUse.compType"
-    :childrens="wrapperInUse.compProps"
+    :derivatedChildrens="wrapperInUse.compProps"
     :name="helithreJson.name"
   />
 </template>
@@ -12,6 +12,7 @@ import type { FormHelitreJSON } from '../types/helitreJSON';
 import { BasicWrapperTypeEnum } from '../types/wrapper';
 import { BasicWrapper, SaveWrapper } from '../composable/wrapper/basicWrapper';
 import { wrapper } from '../index';
+import type { BaseResponse } from '../types/responses/baseResponse';
 
 const props = defineProps<{
   helithreJson: FormHelitreJSON
@@ -20,14 +21,17 @@ const props = defineProps<{
 const wrapperInUse: {
   compType: Component,
   compProps: SaveWrapper | BasicWrapper | null
+  compResponses: Array<BaseResponse> | null
 } = {
   compType: wrapper.HelithrePage,
-  compProps: null
+  compProps: null,
+  compResponses: null
 };
 
 if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.form) {
-  wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens);
+  wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses);
   wrapperInUse.compType = wrapper.HelithreForm;
+  wrapperInUse.compResponses = props.helithreJson.responses
 } else if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.page) {
   wrapperInUse.compProps = new BasicWrapper(props.helithreJson.childrens);
   wrapperInUse.compType = wrapper.HelithrePage;

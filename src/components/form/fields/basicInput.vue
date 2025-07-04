@@ -1,15 +1,19 @@
 <template>
-    <label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
-    <input :type="BasicInputObj.type" :id="BasicInputObj.id" :name="BasicInputObj.id">
+<label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
+    <input :type="BasicInputObj.type" :id="BasicInputObj.id" :name="BasicInputObj.id" :value="response">
 </template>
 <script setup lang="ts">
-import type { PropType } from 'vue';
+import { ref, type PropType, type Ref } from 'vue';
 import { BasicInput } from '../../../composable/inputUtil';
 import type { BasicFieldInterfaceComponent } from '../../../types/fields/basicField';
 
 const props = defineProps({
     conf: {
         type: Object as PropType<BasicFieldInterfaceComponent>
+    },
+    response: {
+        type: String,
+        default: null
     }
 })
 

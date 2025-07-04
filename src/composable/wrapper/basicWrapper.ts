@@ -1,4 +1,5 @@
 import type { BasicFieldInterfaceComponent } from "../../types/fields/basicField";
+import type { BaseResponse } from "../../types/responses/baseResponse";
 import type { save, load } from "../../types/wrapper";
 
 export class BasicWrapper {
@@ -20,7 +21,7 @@ export class BasicWrapper {
         id: key,
         ...value,
       })
-    ) as BasicFieldInterfaceComponent[]
+    ) as BasicFieldInterfaceComponent[];
     return elementToLoad;
   }
 
@@ -41,8 +42,20 @@ export class BasicWrapper {
 export class SaveWrapper extends BasicWrapper {
   //item that need to be send to server for persistant save
   protected saveMap: Map<string, string>;
-  constructor(childrens: Array<BasicFieldInterfaceComponent>) {
+  //load response from server
+  protected responsesMap: Map<string, string>;
+  constructor(
+    childrens: Array<BasicFieldInterfaceComponent>,
+    responses: Array<BaseResponse>
+  ) {
     super(childrens);
+    this.responsesMap = new Map();
+    if (responses != null) {
+      responses.forEach((response: BaseResponse) => {
+        this.setResponsesMap = response;
+      });
+    }
+
     this.saveMap = new Map();
   }
 
@@ -51,6 +64,30 @@ export class SaveWrapper extends BasicWrapper {
   }
 
   set setSaveMap(saveItem: save.SaveType) {
-    this.saveMap.set(saveItem.id, saveItem.value);
+    if (saveItem.id == null || saveItem.id == undefined) {
+      throw new Error(
+        "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
+      );
+    }
+    if (saveItem.value.length > 0) {
+      this.saveMap.set(saveItem.id, saveItem.value);
+    }
+  }
+
+  get getResponsesMap() {
+    return this.responsesMap;
+  }
+
+  responseForId(id: string) {
+    const resForId = this.responsesMap.get(id);
+    if (resForId != undefined) {
+      return resForId;
+    } else {
+      return null
+    }
+  }
+
+  set setResponsesMap(response: BaseResponse) {
+    this.responsesMap.set(response.id, response.value);
   }
 }

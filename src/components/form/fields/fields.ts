@@ -14,10 +14,14 @@ const textInput = defineComponent({
       id: undefined
     }),
   },
+  response: {
+    type: String,
+    required: true
+  }
 },
 
   setup(props) {
-    return () => h(basicInput, { conf: { ...props.conf, type: BasicFieldTypeEnum.text} });
+    return () => h(basicInput, {response:props.response, conf: { ...props.conf, type: BasicFieldTypeEnum.text} });
   },
 });
 
@@ -32,10 +36,14 @@ const numberInput = defineComponent({
       id: undefined
     }),
   },
+  response: {
+    type: String,
+    required: true
+  }
 },
 
   setup(props) {
-    return () => h(basicInput, { conf: { ...props.conf, type:BasicFieldTypeEnum.number} });
+    return () => h(basicInput, {response:props.response, conf: { ...props.conf, type: BasicFieldTypeEnum.number} });
   },
 });
 
@@ -50,10 +58,14 @@ const dateInput = defineComponent({
       id: undefined
     }),
   },
+  response: {
+    type: String,
+    required: true
+  }
 },
 
   setup(props) {
-    return () => h(basicInput, { conf: { ...props.conf, type:BasicFieldTypeEnum.date} });
+    return () => h(basicInput, {response:props.response, conf: { ...props.conf, response:props.response, type: BasicFieldTypeEnum.date} });
   },
 });
 

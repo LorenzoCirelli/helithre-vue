@@ -10,12 +10,22 @@ import { helithreLoad } from './index';
         {
             text:'Primo input exempio',
             id: '0',
-            type:'number'
+            type:'text'
         },
         {
             text:'Secondo input exempio',
             id: '1',
-            type:'date'
+            type:'date',
+        }
+    ],
+    responses: [
+        {
+            id: '0',
+            value: 'Test load'
+        },
+                {
+            id: '1',
+            value: 'Test d'
         }
     ]
 }"></helithreLoad>
