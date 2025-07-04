@@ -21,7 +21,8 @@
     "build": "vite build && pnpm run copy-pkg",
     "copy-pkg": "copy package.lib.json dist\\package.json",
     "types": "vue-tsc ",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest"
   },
   "dependencies": {
     "vue": "^3.5.17"
@@ -29,9 +30,12 @@
   "devDependencies": {
     "@types/node": "^24.0.8",
     "@vitejs/plugin-vue": "^6.0.0",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
+    "jsdom": "^26.1.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.0",
+    "vitest": "^3.2.4",
     "vue-tsc": "^2.2.10"
   }
 }
