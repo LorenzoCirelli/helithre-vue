@@ -1,7 +1,6 @@
 import type { BasicFieldInterfaceComponent } from "../../types/fields/basicField";
 import type { BaseResponse } from "../../types/responses/baseResponse";
 import type { save, load } from "../../types/wrapper";
-
 export class BasicWrapper {
   //item that need to be loaded
   protected loadMap: Map<string, Object>;
@@ -42,6 +41,8 @@ export class BasicWrapper {
 export class SaveWrapper extends BasicWrapper {
   //item that need to be send to server for persistant save
   protected saveMap: Map<string, string>;
+  protected editMap: Map<string, string>;
+  protected deleteMap: Map<string, string>;
   //load response from server
   protected responsesMap: Map<string, string>;
   constructor(
@@ -57,21 +58,40 @@ export class SaveWrapper extends BasicWrapper {
     }
 
     this.saveMap = new Map();
+    this.editMap = new Map();
+    this.deleteMap = new Map();
   }
 
   get getSaveMap() {
     return this.saveMap;
   }
 
+  //set of save, edit and delete
   set setSaveMap(saveItem: save.SaveType) {
     if (saveItem.id == null || saveItem.id == undefined) {
       throw new Error(
         "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
       );
     }
-    if (saveItem.value.length > 0) {
-      this.saveMap.set(saveItem.id, saveItem.value);
+    this.saveMap.set(saveItem.id, saveItem.value);
+  }
+
+  set setEditMap(saveItem: save.SaveType) {
+    if (saveItem.id == null || saveItem.id == undefined) {
+      throw new Error(
+        "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
+      );
     }
+    this.editMap.set(saveItem.id, saveItem.value);
+  }
+
+  set setDeleteMap(saveItem: save.SaveType) {
+    if (saveItem.id == null || saveItem.id == undefined) {
+      throw new Error(
+        "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
+      );
+    }
+    this.deleteMap.set(saveItem.id, saveItem.value);
   }
 
   get getResponsesMap() {
@@ -87,20 +107,29 @@ export class SaveWrapper extends BasicWrapper {
     }
   }
 
-  isItemToSave(id: string, value: string) {
+  autoSetItem(id: string, value: string): boolean {
     const response = this.responseForId(id);
-    if (response != null && response != value) {
+    if (response != null && response != value && value != "") {
+      //edit item map
+      this.setEditMap = { id: id, value: value };
       return true;
     } else if (response == null) {
+      //save item map
+      this.setSaveMap = { id: id, value: value };
       return true;
-    } else {
-      return false;
+    } else if (response != null && response != value && value == "") {
+      //delete item map
+      this.setDeleteMap = { id: id, value: value };
+      return true;
     }
+    return false;
   }
 
   set setResponsesMap(response: BaseResponse) {
     if (response.value.length > 0) {
       this.responsesMap.set(response.id, response.value);
+    } else {
+      this.responsesMap.delete(response.id);
     }
   }
 

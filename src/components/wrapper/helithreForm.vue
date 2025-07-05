@@ -28,13 +28,11 @@ const formChangeEventHandler = (formData: FormData) => {
     derivatedChildrens?.clearSaved();
     formData.forEach((value, key) => {
         const formChangeValue = { id: key, value: String(value) };
-        if (derivatedChildrens && derivatedChildrens?.isItemToSave(formChangeValue.id, formChangeValue.value)) {
+        if(derivatedChildrens?.autoSetItem(formChangeValue.id, formChangeValue.value)) {
             derivatedChildrens.setResponsesMap = { id: formChangeValue.id, value: formChangeValue.value };
-            derivatedChildrens.setSaveMap = { id: formChangeValue.id, value: formChangeValue.value };
         }
     });
-    console.log(derivatedChildrens?.getResponsesMap)
-    console.log(derivatedChildrens?.getSaveMap)
+    console.log(derivatedChildrens)
 
 }
 </script>
