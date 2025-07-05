@@ -1,12 +1,20 @@
 import type { BasicFieldInterfaceComponent } from "../../types/fields/basicField";
 import type { BaseResponse } from "../../types/responses/baseResponse";
 import type { save, load } from "../../types/wrapper";
+import { validatedResult } from "../utils";
+import { ClassToEmitSaveWrapper } from "./emit/emitObject";
 export class BasicWrapper {
+  //name of the wrapper
+  protected name: string;
   //item that need to be loaded
   protected loadMap: Map<string, Object>;
-  constructor(childrens: Array<BasicFieldInterfaceComponent>) {
+  constructor(
+    childrens: Array<BasicFieldInterfaceComponent>,
+    name: string | undefined
+  ) {
     this.loadMap = new Map();
     this.parseChildrens(childrens);
+    this.name = validatedResult(name);
   }
 
   get getLoadMap() {
@@ -47,9 +55,10 @@ export class SaveWrapper extends BasicWrapper {
   protected responsesMap: Map<string, string>;
   constructor(
     childrens: Array<BasicFieldInterfaceComponent>,
-    responses: Array<BaseResponse>
+    responses: Array<BaseResponse>,
+    name: string
   ) {
-    super(childrens);
+    super(childrens, name);
     this.responsesMap = new Map();
     if (responses != null) {
       responses.forEach((response: BaseResponse) => {
@@ -62,8 +71,8 @@ export class SaveWrapper extends BasicWrapper {
     this.deleteMap = new Map();
   }
 
-  get getSaveMap() {
-    return this.saveMap;
+  get getResponsesMap() {
+    return this.responsesMap;
   }
 
   //set of save, edit and delete
@@ -94,8 +103,18 @@ export class SaveWrapper extends BasicWrapper {
     this.deleteMap.set(saveItem.id, saveItem.value);
   }
 
-  get getResponsesMap() {
-    return this.responsesMap;
+  //get of save, edit and delete
+
+  get getSaveMap() {
+    return this.saveMap;
+  }
+
+  get getEditMap() {
+    return this.editMap
+  }
+
+  get getDeleteMap() {
+    return this.deleteMap
   }
 
   responseForId(id: string) {
@@ -135,5 +154,10 @@ export class SaveWrapper extends BasicWrapper {
 
   clearSaved() {
     this.saveMap = new Map();
+  }
+
+  createResultToEmit() {
+    const objToEmit = new ClassToEmitSaveWrapper(this.getSaveMap, this.getEditMap, this.deleteMap, this.name);
+    return objToEmit.getObjToEmit;
   }
 }

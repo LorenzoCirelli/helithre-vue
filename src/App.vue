@@ -23,6 +23,11 @@ import { helithreLoad } from './index';
                 type: 'password',
             },
             {
+                text: 'Email',
+                id: 'user_email',
+                type: 'email',
+            },
+            {
                 text: 'Favourite color',
                 id: 'user_favorite_color',
                 type: 'color',
@@ -38,5 +43,5 @@ import { helithreLoad } from './index';
                 value: 'Test d'
             }
         ]
-    }"></helithreLoad>
+    }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad>
 </template>

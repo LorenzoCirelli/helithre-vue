@@ -1,5 +1,5 @@
 <template>
-  <component
+  <component @submitEvent="emitEvent"
     :is="wrapperInUse.compType"
     :derivatedChildrens="wrapperInUse.compProps"
     :name="helithreJson.name"
@@ -29,13 +29,19 @@ const wrapperInUse: {
 };
 
 if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.form) {
-  wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses);
+  wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses, props.helithreJson.name);
   wrapperInUse.compType = wrapper.HelithreForm;
   wrapperInUse.compResponses = props.helithreJson.responses
 } else if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.page) {
-  wrapperInUse.compProps = new BasicWrapper(props.helithreJson.childrens);
+  wrapperInUse.compProps = new BasicWrapper(props.helithreJson.childrens, props.helithreJson.name);
   wrapperInUse.compType = wrapper.HelithrePage;
 } else {
   throw new Error(`Invalid wrapper: ${props.helithreJson.wrapper}`);
+}
+
+const emit = defineEmits(['helitreEvent']);
+
+const emitEvent = (event:Object) => {
+  emit('helitreEvent', event)
 }
 </script>

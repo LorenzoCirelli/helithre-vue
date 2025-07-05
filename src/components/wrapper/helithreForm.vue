@@ -23,16 +23,20 @@ const props = defineProps({
 })
 const derivatedChildrens = props.derivatedChildrens;
 
+const emit = defineEmits(['submitEvent']);
 //read form edit
 const formChangeEventHandler = (formData: FormData) => {
     derivatedChildrens?.clearSaved();
     formData.forEach((value, key) => {
         const formChangeValue = { id: key, value: String(value) };
-        if(derivatedChildrens?.autoSetItem(formChangeValue.id, formChangeValue.value)) {
+        if (derivatedChildrens?.autoSetItem(formChangeValue.id, formChangeValue.value)) {
             derivatedChildrens.setResponsesMap = { id: formChangeValue.id, value: formChangeValue.value };
         }
     });
-    console.log(derivatedChildrens)
-
+    try {
+        emit('submitEvent', validatedResult(derivatedChildrens?.createResultToEmit()))
+    } catch (e) {
+        console.error(`Error genereting event action, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues. ${e}`);
+    }
 }
 </script>
