@@ -58,13 +58,20 @@ export class BasicWrapper {
     childrens.forEach((children) => {
       this.setLoadMap = {
         id: children.id,
-        value: { text: children.text, type: children.type!, choises: (children?.choises?.length)!=undefined ? children.choises : null },
+        value: {
+          text: children.text,
+          type: children.type!,
+          choises:
+            children?.choises?.length != undefined ? children.choises : null,
+        },
       };
     });
   }
 }
 
 export class SaveWrapper extends BasicWrapper {
+  protected errorMessageOpenIssue =
+    "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues";
   //item that need to be send to server for persistant save
   protected saveMap: Map<string, string>;
   protected editMap: Map<string, string>;
@@ -96,27 +103,21 @@ export class SaveWrapper extends BasicWrapper {
   //set of save, edit and delete
   set setSaveMap(saveItem: save.SaveType) {
     if (saveItem.id == null || saveItem.id == undefined) {
-      throw new Error(
-        "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
-      );
+      throw new Error(this.errorMessageOpenIssue);
     }
     this.saveMap.set(saveItem.id, saveItem.value);
   }
 
   set setEditMap(saveItem: save.SaveType) {
     if (saveItem.id == null || saveItem.id == undefined) {
-      throw new Error(
-        "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
-      );
+      throw new Error(this.errorMessageOpenIssue);
     }
     this.editMap.set(saveItem.id, saveItem.value);
   }
 
   set setDeleteMap(saveItem: save.SaveType) {
     if (saveItem.id == null || saveItem.id == undefined) {
-      throw new Error(
-        "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues"
-      );
+      throw new Error(this.errorMessageOpenIssue);
     }
     this.deleteMap.set(saveItem.id, saveItem.value);
   }
@@ -154,7 +155,7 @@ export class SaveWrapper extends BasicWrapper {
       //save item map
       if (value.length > 0) {
         this.setSaveMap = { id: id, value: value };
-        return true
+        return true;
       }
       return false;
     } else if (response != null && response != value && value == "") {
