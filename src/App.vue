@@ -31,6 +31,19 @@ import { helithreLoad } from './index';
                 text: 'Favourite color',
                 id: 'user_favorite_color',
                 type: 'color',
+            },
+            {
+                text: 'Profile type',
+                id: 'user_profile_type',
+                type: 'select',
+                choises: [{
+                    text: 'Admin',
+                    questionAnswareId: 'ADMIN'
+                },
+                {
+                    text: 'User',
+                    questionAnswareId: 'USER'
+                }]
             }
         ],
         responses: [
@@ -40,7 +53,11 @@ import { helithreLoad } from './index';
             },
             {
                 id: 'user_surname',
-                value: 'Test d'
+                value: 'Hello world'
+            },
+            {
+                id: 'user_profile_type',
+                value: 'USER'
             }
         ]
     }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad>

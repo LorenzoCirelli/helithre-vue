@@ -38,7 +38,6 @@ if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.form) {
 } else {
   throw new Error(`Invalid wrapper: ${props.helithreJson.wrapper}`);
 }
-
 const emit = defineEmits(['helitreEvent']);
 
 const emitEvent = (event:Object) => {

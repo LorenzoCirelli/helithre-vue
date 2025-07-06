@@ -3,7 +3,7 @@ const basicInput = defineAsyncComponent(() => import("./basicInput.vue"));
 import type { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
 import { BasicFieldTypeEnum } from "../../../types/fields/basicField";
 import { validatedResult } from "../../../composable/utils";
-
+import selectInput from "./selectInput.vue";
 //default config
 const baseObjConf = {
   name: "textInput",
@@ -57,4 +57,4 @@ const timeInput = createBasicInputComponent(BasicFieldTypeEnum.time);
 const urlInput = createBasicInputComponent(BasicFieldTypeEnum.url);
 const weekInput = createBasicInputComponent(BasicFieldTypeEnum.week);
 
-export { textInput, numberInput, dateInput, colorInput, datetimeLocalInput, emailInput, fileInput, hiddenInput, imageInput, monthInput,passwordInput, rangeInput, resetInput, searchInput, telInput, timeInput, urlInput, weekInput};
+export { textInput, numberInput, dateInput, colorInput, datetimeLocalInput, emailInput, fileInput, hiddenInput, imageInput, monthInput,passwordInput, rangeInput, resetInput, searchInput, telInput, timeInput, urlInput, weekInput, selectInput};

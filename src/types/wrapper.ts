@@ -5,12 +5,6 @@ export namespace save {
   }
 }
 
-export namespace load {
-  export interface LoadType {
-    id: string;
-    value: Object;
-  }
-}
 
 export const BasicWrapperTypeEnum = {
   form: "form",

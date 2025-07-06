@@ -1,13 +1,31 @@
-import type { BasicFieldInterfaceComponent } from "../../types/fields/basicField";
+import type {
+  BasicFieldInterfaceComponent,
+  BasicFieldType,
+  MultipleChoisesInterface,
+} from "../../types/fields/basicField";
 import type { BaseResponse } from "../../types/responses/baseResponse";
-import type { save, load } from "../../types/wrapper";
+import type { save } from "../../types/wrapper";
 import { validatedResult } from "../utils";
 import { ClassToEmitSaveWrapper } from "./emit/emitObject";
+
+export namespace wrapperItemOptions {
+  export type loadObjType = {
+    text: string;
+    type: BasicFieldType;
+    choises: null | Array<MultipleChoisesInterface>;
+  };
+
+  export interface LoadType {
+    id: string;
+    value: loadObjType;
+  }
+}
+
 export class BasicWrapper {
   //name of the wrapper
   protected name: string;
   //item that need to be loaded
-  protected loadMap: Map<string, Object>;
+  protected loadMap: Map<string, wrapperItemOptions.loadObjType>;
   constructor(
     childrens: Array<BasicFieldInterfaceComponent>,
     name: string | undefined
@@ -32,7 +50,7 @@ export class BasicWrapper {
     return elementToLoad;
   }
 
-  set setLoadMap(loadItem: load.LoadType) {
+  set setLoadMap(loadItem: wrapperItemOptions.LoadType) {
     this.loadMap.set(loadItem.id, loadItem.value);
   }
 
@@ -40,7 +58,7 @@ export class BasicWrapper {
     childrens.forEach((children) => {
       this.setLoadMap = {
         id: children.id,
-        value: { text: children.text, type: children.type },
+        value: { text: children.text, type: children.type!, choises: (children?.choises?.length)!=undefined ? children.choises : null },
       };
     });
   }
@@ -110,11 +128,11 @@ export class SaveWrapper extends BasicWrapper {
   }
 
   get getEditMap() {
-    return this.editMap
+    return this.editMap;
   }
 
   get getDeleteMap() {
-    return this.deleteMap
+    return this.deleteMap;
   }
 
   responseForId(id: string) {
@@ -134,8 +152,11 @@ export class SaveWrapper extends BasicWrapper {
       return true;
     } else if (response == null) {
       //save item map
-      this.setSaveMap = { id: id, value: value };
-      return true;
+      if (value.length > 0) {
+        this.setSaveMap = { id: id, value: value };
+        return true
+      }
+      return false;
     } else if (response != null && response != value && value == "") {
       //delete item map
       this.setDeleteMap = { id: id, value: value };
@@ -157,7 +178,12 @@ export class SaveWrapper extends BasicWrapper {
   }
 
   createResultToEmit() {
-    const objToEmit = new ClassToEmitSaveWrapper(this.getSaveMap, this.getEditMap, this.deleteMap, this.name);
+    const objToEmit = new ClassToEmitSaveWrapper(
+      this.getSaveMap,
+      this.getEditMap,
+      this.deleteMap,
+      this.name
+    );
     return objToEmit.getObjToEmit;
   }
 }
