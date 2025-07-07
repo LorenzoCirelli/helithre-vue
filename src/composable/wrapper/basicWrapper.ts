@@ -138,27 +138,23 @@ export class SaveWrapper extends BasicWrapper {
 
   responseForId(id: string) {
     const resForId = this.responsesMap.get(id);
-    if (resForId != undefined) {
-      return resForId;
-    } else {
-      return null;
-    }
+    return resForId;
   }
 
   autoSetItem(id: string, value: string): boolean {
     const response = this.responseForId(id);
-    if (response != null && response != value && value != "") {
-      //edit item map
-      this.setEditMap = { id: id, value: value };
-      return true;
-    } else if (response == null) {
+    if (response == undefined) {
       //save item map
       if (value.length > 0) {
         this.setSaveMap = { id: id, value: value };
         return true;
       }
       return false;
-    } else if (response != null && response != value && value == "") {
+    } else if (response != undefined && response != value && value != "") {
+      //edit item map
+      this.setEditMap = { id: id, value: value };
+      return true;
+    } else if (response != undefined && response != value && value == "") {
       //delete item map
       this.setDeleteMap = { id: id, value: value };
       return true;

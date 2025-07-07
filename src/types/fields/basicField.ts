@@ -19,7 +19,8 @@ export const BasicFieldTypeEnum = {
   time:"time",
   url:"url",
   week:"week",
-  select:"select"
+  select:"select",
+  checkbox:"checkbox",
 } as const;
 
 export type BasicFieldType =

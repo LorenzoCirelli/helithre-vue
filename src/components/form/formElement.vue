@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="getFormValues">
     <slot />
-    <input type="submit" value="send">
+    <input type="submit">
   </form>
 </template>
 <script setup lang="ts">
@@ -13,6 +13,5 @@ function getFormValues(event: Event) {
   const formData = new FormData(form);
   emitChange('formChange', formData);
 }
-
 
 </script>

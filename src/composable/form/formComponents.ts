@@ -19,5 +19,6 @@ export const componentsMap: Map<string, Component> = new Map([
   ["date", form.fields.dateInput],
   ["url", form.fields.urlInput],
   ["week", form.fields.weekInput],
-  ["select", form.fields.selectInput]
+  ["select", form.fields.selectInput],
+  ["checkbox", form.fields.checkBoxInput]
 ]);

@@ -4,6 +4,7 @@ import type { BasicFieldInterfaceComponent } from "../../../types/fields/basicFi
 import { BasicFieldTypeEnum } from "../../../types/fields/basicField";
 import { validatedResult } from "../../../composable/utils";
 import selectInput from "./selectInput.vue";
+import checkBoxInput from "./checkBoxInput.vue";
 //default config
 const baseObjConf = {
   name: "textInput",
@@ -57,4 +58,4 @@ const timeInput = createBasicInputComponent(BasicFieldTypeEnum.time);
 const urlInput = createBasicInputComponent(BasicFieldTypeEnum.url);
 const weekInput = createBasicInputComponent(BasicFieldTypeEnum.week);
 
-export { textInput, numberInput, dateInput, colorInput, datetimeLocalInput, emailInput, fileInput, hiddenInput, imageInput, monthInput,passwordInput, rangeInput, resetInput, searchInput, telInput, timeInput, urlInput, weekInput, selectInput};
+export { textInput, numberInput, dateInput, colorInput, datetimeLocalInput, emailInput, fileInput, hiddenInput, imageInput, monthInput,passwordInput, rangeInput, resetInput, searchInput, telInput, timeInput, urlInput, weekInput, selectInput, checkBoxInput};
