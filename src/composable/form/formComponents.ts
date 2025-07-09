@@ -16,7 +16,6 @@ export const componentsMap: Map<string, Component> = new Map([
   ["search", form.fields.searchInput],
   ["tel", form.fields.telInput],
   ["time", form.fields.timeInput],
-  ["date", form.fields.dateInput],
   ["url", form.fields.urlInput],
   ["week", form.fields.weekInput],
   ["select", form.fields.selectInput],
