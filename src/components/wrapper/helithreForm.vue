@@ -1,9 +1,11 @@
 <template>
     <form-element @formChange="formChangeEventHandler">
-        <component :is="componentsMap.get(validatedResult(children.type))" :conf="children"
-            :response="derivatedChildrens?.responseForId(children.id)"
-            v-for="children, key in derivatedChildrens?.getLoadArray" :key="key">
-        </component>
+        <div v-for="children, key in derivatedChildrens?.getLoadArray" :key="key">
+            <component :is="componentsMap.get(validatedResult(children.type))" :conf="children"
+                :response="derivatedChildrens?.responseForId(children.id)">
+            </component>
+        </div>
+
     </form-element>
 </template>
 
