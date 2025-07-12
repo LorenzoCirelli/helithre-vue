@@ -71,7 +71,7 @@ In this example, the result is written to the console.
 
 ## The JSON Structure
 
-The JSON to provide need to be created with the following structure:
+The JSON to provide needs to be created with the following structure:
 
 ```json
 {
@@ -107,7 +107,7 @@ The JSON to provide need to be created with the following structure:
 - **name**: Describes the wrapper; you can see it returned by the callback
 - **wrapper**: Describes the wrapper type (`form` or `page` are accepted)
 - **childrens**: The array that contains all the fields or blocks of the page
-- **responses**: The array that contains all the responses to load for the fields, connected to the questions by Id
+- **responses**: The array that contains all the responses to load for the fields, connected to the questions by ID
 
 ### Field Structure
 
@@ -174,6 +174,7 @@ The `save`, `edit`, and `delete` properties provide a map with all the changes t
 ### Running the Project
 
 To run the project, you will need pnpm.
+
 If you haven't installed pnpm yet, please follow the instructions here: https://pnpm.io
 
 Once inside the project folder, install all required dependencies by running:
@@ -205,3 +206,36 @@ To test the library, there are some unit tests. To execute them, run:
 ```bash
 pnpm test
 ```
+
+## Configuration
+
+### Styling
+
+To style Helithre, you need to create and import a CSS file. The CSS file will define global settings for Helithre.
+
+#### Form Styling
+
+The form is editable via the `.helithre_form` class. Inside this class, you can style elements using native HTML selectors, for example:
+
+- General input styling:
+  ```css
+  .helithre_form input {
+    /* Your styles here */
+  }
+  ```
+
+- Specific input type styling:
+  ```css
+  .helithre_form input[type="text"] {
+    /* Your styles here */
+  }
+  ```
+
+- Styling using the specific ID passed in the JSON:
+  ```css
+  .helithre_form #specified_id {
+    /* Your styles here */
+  }
+  ```
+
+You can also use other CSS/SCSS organization methods like BEM (Block Element Modifier) methodology.
