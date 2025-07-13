@@ -2,6 +2,8 @@
 
 **TL;DR 😉**: Helithre allows you to create pages and forms in Vue using JSON configuration.
 
+> ⚠️ This library is not affiliated with or officially endorsed by the Vue.js team.
+
 Helithre is a Vue.js-based framework that lets you build entire pages and forms declaratively using just JSON. You can define fields and page structures without writing markup code, making the development of dynamic interfaces much faster.
 
 Helithre is also built to make it easier to receive information about which fields or page blocks to show from a server and render them dynamically.
