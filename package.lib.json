@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "main": "./helithre-vue.umd.cjs",
   "module": "./helithre-vue.js",
+  "types": "./index.d.ts",
   "exports": {
     ".": {
       "import": "./helithre-vue.js",
-      "require": "./helithre-vue.umd.cjs"
+      "require": "./helithre-vue.umd.cjs",
+      "types": "./index.d.ts"
     }
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "vue": "^3.5.17"
   }
 }

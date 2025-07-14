@@ -29,8 +29,8 @@ import { type Component } from 'vue';
 import type { FormHelitreJSON } from '../types/helitreJSON';
 import { BasicWrapperTypeEnum } from '../types/wrapper';
 import { BasicWrapper, SaveWrapper } from '../composable/wrapper/basicWrapper';
-import { wrapper } from '../index';
 import type { BaseResponse } from '../types/responses/baseResponse';
+import { HelithreForm, HelithrePage } from './wrapper/wrapper';
 
 const props = defineProps<{
   helithreJson: FormHelitreJSON
@@ -41,18 +41,18 @@ const wrapperInUse: {
   compProps: SaveWrapper | BasicWrapper | null
   compResponses: Array<BaseResponse> | null
 } = {
-  compType: wrapper.HelithrePage,
+  compType: HelithrePage,
   compProps: null,
   compResponses: null
 };
 
 if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.form) {
   wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses, props.helithreJson.name);
-  wrapperInUse.compType = wrapper.HelithreForm;
+  wrapperInUse.compType = HelithreForm;
   wrapperInUse.compResponses = props.helithreJson.responses
 } else if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.page) {
   wrapperInUse.compProps = new BasicWrapper(props.helithreJson.childrens, props.helithreJson.name);
-  wrapperInUse.compType = wrapper.HelithrePage;
+  wrapperInUse.compType = HelithrePage;
 } else {
   throw new Error(`Invalid wrapper: ${props.helithreJson.wrapper}`);
 }
