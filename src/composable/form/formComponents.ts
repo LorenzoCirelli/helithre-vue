@@ -1,5 +1,24 @@
 import type { Component } from "vue";
-import { checkBoxInput, colorInput, dateInput, datetimeLocalInput, emailInput, hiddenInput, imageInput, monthInput, numberInput, passwordInput, resetInput, searchInput, selectInput, telInput, textInput, timeInput, urlInput, weekInput } from "../../components/form/fields/fields";
+import {
+  colorInput,
+  dateInput,
+  datetimeLocalInput,
+  emailInput,
+  hiddenInput,
+  imageInput,
+  monthInput,
+  numberInput,
+  passwordInput,
+  resetInput,
+  searchInput,
+  telInput,
+  textInput,
+  timeInput,
+  urlInput,
+  weekInput,
+  checkBoxInput,
+  selectInput,
+} from "../../components/form/fields/fields";
 
 export const componentsMap: Map<string, Component> = new Map([
   ["text", textInput],
@@ -19,5 +38,5 @@ export const componentsMap: Map<string, Component> = new Map([
   ["url", urlInput],
   ["week", weekInput],
   ["select", selectInput],
-  ["checkbox", checkBoxInput]
+  ["checkbox", checkBoxInput],
 ]);

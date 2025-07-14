@@ -21,8 +21,8 @@ const basicInput = defineAsyncComponent(() => import("./basicInput.vue"));
 import type { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
 import { BasicFieldTypeEnum } from "../../../types/fields/basicField";
 import { validatedResult } from "../../../composable/utils";
-import selectInput from "./selectInput.vue";
 import checkBoxInput from "./checkBoxInput.vue";
+import selectInput from "./selectInput.vue";
 //default config
 const baseObjConf = {
   name: "textInput",
@@ -38,6 +38,7 @@ const baseObjConf = {
     response: {
       type: String,
       required: false,
+      default: "",
     },
   },
 };
@@ -51,17 +52,20 @@ function createBasicInputComponent(type: string) {
           response: props.response,
           conf: {
             ...props.conf,
-           type: validatedResult(type),
+            type: validatedResult(type),
           },
         });
     },
   });
 }
+
 const textInput = createBasicInputComponent(BasicFieldTypeEnum.text);
 const numberInput = createBasicInputComponent(BasicFieldTypeEnum.number);
 const dateInput = createBasicInputComponent(BasicFieldTypeEnum.date);
 const colorInput = createBasicInputComponent(BasicFieldTypeEnum.color);
-const datetimeLocalInput = createBasicInputComponent(BasicFieldTypeEnum.datetimeLocal);
+const datetimeLocalInput = createBasicInputComponent(
+  BasicFieldTypeEnum.datetimeLocal
+);
 const emailInput = createBasicInputComponent(BasicFieldTypeEnum.email);
 const fileInput = createBasicInputComponent(BasicFieldTypeEnum.file);
 const hiddenInput = createBasicInputComponent(BasicFieldTypeEnum.hidden);
@@ -76,4 +80,25 @@ const timeInput = createBasicInputComponent(BasicFieldTypeEnum.time);
 const urlInput = createBasicInputComponent(BasicFieldTypeEnum.url);
 const weekInput = createBasicInputComponent(BasicFieldTypeEnum.week);
 
-export { textInput, numberInput, dateInput, colorInput, datetimeLocalInput, emailInput, fileInput, hiddenInput, imageInput, monthInput,passwordInput, rangeInput, resetInput, searchInput, telInput, timeInput, urlInput, weekInput, selectInput, checkBoxInput};
+export {
+  textInput,
+  numberInput,
+  dateInput,
+  colorInput,
+  datetimeLocalInput,
+  emailInput,
+  fileInput,
+  hiddenInput,
+  imageInput,
+  monthInput,
+  passwordInput,
+  rangeInput,
+  resetInput,
+  searchInput,
+  telInput,
+  timeInput,
+  urlInput,
+  weekInput,
+  checkBoxInput,
+  selectInput,
+};
