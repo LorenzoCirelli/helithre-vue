@@ -16,7 +16,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
       name: "helithre-vue",
-      fileName: (format) => `helithre-vue.${format}.js`,
+      fileName: `helithre-vue.js`,
     },
     rollupOptions: {
       external: ["vue"],
