@@ -1,4 +1,4 @@
-import { BasicWrapperTypeEnum } from "../../../types/wrapper";
+import { wrapperTypeEnum } from "../../../types/wrapper";
 
 export class ClassToEmitSaveWrapper {
   protected save: Map<string, string>;
@@ -41,7 +41,7 @@ export class ClassToEmitSaveWrapper {
   get getObjToEmit():Object {
     const obj = {
         name: this.name,
-        type: BasicWrapperTypeEnum.form,
+        type: wrapperTypeEnum.form,
         results: {
             save: this.save,
             edit:this.edit,

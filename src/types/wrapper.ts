@@ -6,10 +6,10 @@ export namespace save {
 }
 
 
-export const BasicWrapperTypeEnum = {
+export const wrapperTypeEnum = {
   form: "form",
   page: "page",
 } as const;
 
 export type BasicWrapperType =
-  (typeof BasicWrapperTypeEnum)[keyof typeof BasicWrapperTypeEnum];
+  (typeof wrapperTypeEnum)[keyof typeof wrapperTypeEnum];
