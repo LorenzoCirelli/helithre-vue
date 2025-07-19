@@ -1,17 +1,17 @@
 {
-  "name": "helitre-vue",
+  "name": "helithre-vue",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/helitre-vue.umd.cjs",
-  "module": "./dist/helitre-vue.js",
+  "main": "./dist/helithre-vue.umd.cjs",
+  "module": "./dist/helithre-vue.js",
   "exports": {
     ".": {
-      "import": "./dist/helitre-vue.js",
-      "require": "./dist/helitre-vue.umd.cjs"
+      "import": "./dist/helithre-vue.js",
+      "require": "./dist/helithre-vue.umd.cjs"
     },
     "./style.css": "./dist/style.css"
   },
@@ -28,16 +28,16 @@
     "vue": "^3.5.17"
   },
   "devDependencies": {
-    "@types/node": "^24.0.8",
+    "@types/node": "^24.0.15",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "jsdom": "^26.1.0",
     "shx": "^0.4.0",
     "typescript": "~5.8.3",
-    "vite": "^7.0.0",
+    "vite": "^7.0.5",
     "vite-plugin-dts": "^4.5.4",
     "vitest": "^3.2.4",
-    "vue-tsc": "^2.2.10"
+    "vue-tsc": "^2.2.12"
   }
 }
