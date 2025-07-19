@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import vue from "@vitejs/plugin-vue";
 import dts from "vite-plugin-dts";
+import { resolve } from "path";
 
 export default defineConfig({
   plugins: [
@@ -13,8 +14,8 @@ export default defineConfig({
   ],
   build: {
     lib: {
-      entry: "src/index.ts",
-      name: "HelithreVue",
+      entry: resolve(__dirname, "src/index.ts"),
+      name: "helithre-vue",
       fileName: (format) => `helithre-vue.${format}.js`,
     },
     rollupOptions: {
