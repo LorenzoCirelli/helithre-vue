@@ -1,5 +1,5 @@
 <template>
-    <form-element @formChange="formChangeEventHandler">
+    <form-element @formChange="formChangeEventHandler" :name="name">
         <div v-for="children, key in derivatedChildrens?.getLoadArray" :key="key">
             <component :is="componentToRender(children.type)" :conf="children" :response="derivatedChildrens?.responseForId(children.id)">
             </component>
