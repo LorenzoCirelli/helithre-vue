@@ -1,5 +1,5 @@
 <template>
-<label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
+    <label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
     <input :type="BasicInputObj.type" v-model="serverResponse" :id="BasicInputObj.id">
     <input type="hidden" :name="BasicInputObj.id" v-model="serverResponse">
 </template>
@@ -10,12 +10,18 @@ import type { BasicFieldInterfaceComponent } from '../../../types/fields/basicFi
 
 const props = defineProps({
     conf: {
-        type: Object as PropType<BasicFieldInterfaceComponent>
+        type: Object as PropType<BasicFieldInterfaceComponent>,
+        required: true,
+        default: () => ({
+            text: undefined,
+            id: undefined,
+        }),
     },
     response: {
         type: String,
-        default: null
-    }
+        required: false,
+        default: '',
+    },
 })
 
 //retriving information for a basic input

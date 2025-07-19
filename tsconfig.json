@@ -1,12 +1,14 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
-    "exclude": ["src/App.vue", "src/main.ts"],
   "compilerOptions": {
-    "outDir": "dist",
-    "declaration": true
-  }
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "jsx": "preserve",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["vue"]
+  },
+  "include": ["src", "shims-vue.d.ts"]
 }
