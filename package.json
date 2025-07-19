@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && pnpm run copy-pkg",
-    "copy-pkg": "copy package.lib.json dist\\package.json",
+    "copy-pkg": "shx cp package.lib.json dist/package.json",
     "types": "vue-tsc ",
     "preview": "vite preview",
     "test": "vitest"
@@ -33,6 +33,7 @@
     "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.7.0",
     "jsdom": "^26.1.0",
+    "shx": "^0.4.0",
     "typescript": "~5.8.3",
     "vite": "^7.0.0",
     "vite-plugin-dts": "^4.5.4",
