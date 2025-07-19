@@ -1,9 +1,6 @@
 <template>
-  <component @submitEvent="emitEvent"
-    :is="wrapperInUse.compType"
-    :derivatedChildrens="wrapperInUse.compProps"
-    :name="helithreJson.name"
-  />
+  <component @submitEvent="emitEvent" :is="wrapperInUse.compType" :derivatedChildrens="wrapperInUse.compProps"
+    :name="helithreJson.name" />
 </template>
 
 <script lang="ts" setup>
@@ -27,38 +24,43 @@
 
 import { type Component } from 'vue';
 import type { FormHelitreJSON } from '../types/helitreJSON';
-import { BasicWrapperTypeEnum } from '../types/wrapper';
+import { wrapperTypeEnum } from '../types/wrapper';
 import { BasicWrapper, SaveWrapper } from '../composable/wrapper/basicWrapper';
 import type { BaseResponse } from '../types/responses/baseResponse';
 import { HelithreForm, HelithrePage } from './wrapper/wrapper';
 
 const props = defineProps<{
+  //TODO: better type
   helithreJson: FormHelitreJSON
 }>();
+
 
 const wrapperInUse: {
   compType: Component,
   compProps: SaveWrapper | BasicWrapper | null
-  compResponses: Array<BaseResponse> | null
+  compResponses?: Array<BaseResponse> | null
 } = {
   compType: HelithrePage,
   compProps: null,
   compResponses: null
 };
 
-if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.form) {
+const wrapperType: string = props.helithreJson.wrapper.trim();
+if (wrapperType === wrapperTypeEnum.form) {
   wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses, props.helithreJson.name);
   wrapperInUse.compType = HelithreForm;
   wrapperInUse.compResponses = props.helithreJson.responses
-} else if (props.helithreJson.wrapper.trim() === BasicWrapperTypeEnum.page) {
+} else if (wrapperType === wrapperTypeEnum.page) {
   wrapperInUse.compProps = new BasicWrapper(props.helithreJson.childrens, props.helithreJson.name);
   wrapperInUse.compType = HelithrePage;
 } else {
   throw new Error(`Invalid wrapper: ${props.helithreJson.wrapper}`);
 }
+
+//manage emits to helithreLoad
 const emit = defineEmits(['helitreEvent']);
 
-const emitEvent = (event:Object) => {
+const emitEvent = (event: unknown) => {
   emit('helitreEvent', event)
 }
 </script>

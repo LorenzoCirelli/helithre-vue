@@ -25,7 +25,7 @@ import checkBoxInput from "./checkBoxInput.vue";
 import selectInput from "./selectInput.vue";
 //default config
 const baseObjConf = {
-  name: "textInput",
+  name: "BasicInput",
   props: {
     conf: {
       type: Object as PropType<BasicFieldInterfaceComponent>,
@@ -45,19 +45,18 @@ const baseObjConf = {
 
 function createBasicInputComponent(type: string) {
   return defineComponent({
-    ...baseObjConf,
+    name: baseObjConf.name,
+    props: baseObjConf.props,
     setup(props) {
       return () =>
         h(basicInput, {
           response: props.response,
-          conf: {
-            ...props.conf,
-            type: validatedResult(type),
-          },
+          conf: { ...props.conf, type: validatedResult(type) },
         });
     },
   });
 }
+
 
 const textInput = createBasicInputComponent(BasicFieldTypeEnum.text);
 const numberInput = createBasicInputComponent(BasicFieldTypeEnum.number);

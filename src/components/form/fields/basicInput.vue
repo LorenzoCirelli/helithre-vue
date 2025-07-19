@@ -1,5 +1,5 @@
 <template>
-<label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
+    <label :for="BasicInputObj.id">{{ BasicInputObj.text }}</label>
     <input :type="BasicInputObj.type" :id="BasicInputObj.id" :name="BasicInputObj.id" :value="response">
 </template>
 <script setup lang="ts">
@@ -9,11 +9,13 @@ import type { BasicFieldInterfaceComponent } from '../../../types/fields/basicFi
 
 const props = defineProps({
     conf: {
-        type: Object as PropType<BasicFieldInterfaceComponent>
+        type: Object as PropType<BasicFieldInterfaceComponent>,
+        required: true
     },
     response: {
         type: String,
-        default: null
+        default: null,
+        required: false
     }
 })
 
