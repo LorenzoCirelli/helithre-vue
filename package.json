@@ -1,17 +1,17 @@
 {
-  "name": "helitre-vue",
+  "name": "helithre-vue",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "files": [
     "dist"
   ],
-  "main": "./dist/helitre-vue.umd.cjs",
-  "module": "./dist/helitre-vue.js",
+  "main": "./dist/helithre-vue.umd.cjs",
+  "module": "./dist/helithre-vue.js",
   "exports": {
     ".": {
-      "import": "./dist/helitre-vue.js",
-      "require": "./dist/helitre-vue.umd.cjs"
+      "import": "./dist/helithre-vue.js",
+      "require": "./dist/helithre-vue.umd.cjs"
     },
     "./style.css": "./dist/style.css"
   },

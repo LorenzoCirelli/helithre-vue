@@ -56,7 +56,7 @@ const formChangeEventHandler = (formData: FormData) => {
     try {
         emit('submitEvent', validatedResult(derivatedChildrens?.createResultToEmit()))
     } catch (e) {
-        console.error(`Error genereting event action, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues. ${e}`);
+        console.error(`Error genereting event action, open an issue on https://github.com/LorenzoCirelli/helithre-vue/issues. ${e}`);
     }
 }
 </script>

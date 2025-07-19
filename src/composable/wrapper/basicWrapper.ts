@@ -71,7 +71,7 @@ export class BasicWrapper {
 
 export class SaveWrapper extends BasicWrapper {
   protected errorMessageOpenIssue =
-    "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helitre-vue/issues";
+    "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helithre-vue/issues";
   //item that need to be send to server for persistant save
   protected saveMap: Map<string, string>;
   protected editMap: Map<string, string>;
