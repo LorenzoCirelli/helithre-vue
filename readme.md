@@ -197,8 +197,6 @@ You can now test it with an example configuration or use your own JSON to test i
 
 To use the project, it's recommended to build it first.
 
-**Note**: The build process (for now) is only possible on Windows.
-
 The command to run it is:
 ```bash
 pnpm build
