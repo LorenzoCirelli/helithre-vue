@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { helithreLoad } from './index';
+import helithreLoad from './index';
 </script>
 
 <template>
