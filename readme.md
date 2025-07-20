@@ -217,25 +217,25 @@ To style Helithre, you need to create and import a CSS file. The CSS file will d
 
 #### Form Styling
 
-The form is editable via the `.helithre_form` class. Inside this class, you can style elements using native HTML selectors, for example:
+The form is editable via the `.helithreForm` class. Inside this class, you can style elements using native HTML selectors, for example:
 
 - General input styling:
   ```css
-  .helithre_form input {
+  .helithreForm input {
     /* Your styles here */
   }
   ```
 
 - Specific input type styling:
   ```css
-  .helithre_form input[type="text"] {
+  .helithreForm input[type="text"] {
     /* Your styles here */
   }
   ```
 
 - Styling using the specific ID passed in the JSON:
   ```css
-  .helithre_form #specified_id {
+  .helithreForm #specified_id {
     /* Your styles here */
   }
   ```
