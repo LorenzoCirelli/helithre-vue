@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="getFormValues" class="helithre_form" :id="name">
+  <form @submit.prevent="getFormValues" class="helithreForm" :id="name">
     <slot />
     <input type="submit">
   </form>
