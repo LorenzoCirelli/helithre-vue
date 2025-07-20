@@ -1,6 +1,6 @@
 {
   "name": "helithre-vue",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "./helithre-vue.umd.cjs",
   "module": "./helithre-vue.js",
   "types": "./index.d.ts",
@@ -12,6 +12,6 @@
     }
   },
   "peerDependencies": {
-    "vue": "^3.5.17"
+    "vue": "^3.0.0"
   }
 }
