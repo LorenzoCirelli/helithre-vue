@@ -28,5 +28,5 @@ export interface BasicHelitreJSON {
 
 export interface FormHelitreJSON extends BasicHelitreJSON {
     childrens: Array<BasicFieldInterfaceComponent>
-    responses: Array<BaseResponse>
+    responses?: Array<BaseResponse>
 }

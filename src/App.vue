@@ -70,4 +70,15 @@ import helithreLoad from './index';
             }
         ]
     }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad>
+
+    <helithreLoad :helithre-json="{
+        name: 'FirstPage',
+        wrapper: 'page',
+        childrens: [
+            {
+                text: 'My first text',
+                id: 'first_component',
+            }
+        ]
+    }"></helithreLoad>
 </template>

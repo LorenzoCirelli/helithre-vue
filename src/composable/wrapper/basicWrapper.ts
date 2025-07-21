@@ -69,6 +69,10 @@ export class BasicWrapper {
   }
 }
 
+export class PageWrapper extends BasicWrapper {
+
+}
+
 export class SaveWrapper extends BasicWrapper {
   protected errorMessageOpenIssue =
     "The id of the response is null or undefined, open an issue on https://github.com/LorenzoCirelli/helithre-vue/issues";
@@ -80,12 +84,12 @@ export class SaveWrapper extends BasicWrapper {
   protected responsesMap: Map<string, string>;
   constructor(
     childrens: Array<BasicFieldInterfaceComponent>,
-    responses: Array<BaseResponse>,
+    responses: Array<BaseResponse> | undefined,
     name: string
   ) {
     super(childrens, name);
     this.responsesMap = new Map();
-    if (responses != null) {
+    if (responses != null && responses != undefined) {
       responses.forEach((response: BaseResponse) => {
         this.setResponsesMap = response;
       });
