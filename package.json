@@ -17,8 +17,9 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && pnpm run copy-pkg",
+    "build": "vite build && pnpm run copy-pkg && pnpm run copy-readme",
     "copy-pkg": "shx cp package.lib.json dist/package.json",
+    "copy-readme": "shx cp library_package.md dist/readme.md",
     "types": "vue-tsc ",
     "preview": "vite preview",
     "test": "vitest"

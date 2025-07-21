@@ -1,6 +1,6 @@
 {
   "name": "helithre-vue",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./helithre-vue.umd.cjs",
   "module": "./helithre-vue.js",
   "types": "./index.d.ts",
@@ -11,7 +11,21 @@
       "types": "./index.d.ts"
     }
   },
+  "description": "Helithre allows you to create pages (coming soon) and forms in Vue using JSON configuration",
   "peerDependencies": {
     "vue": "^3.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LorenzoCirelli/helithre-vue"
+  },
+  "keywords": ["vue3", "vue", "form", "forms", "json", "json-forms"],
+  "author": {
+    "name": "Lorenzo Cirelli"
+  },
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/LorenzoCirelli/helithre-vue/issues"
+  },
+  "homepage": "https://github.com/LorenzoCirelli/helithre-vue#readme"
 }
