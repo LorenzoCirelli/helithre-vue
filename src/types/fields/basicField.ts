@@ -26,14 +26,6 @@ export const BasicFieldTypeEnum = {
 export type BasicFieldType =
   (typeof BasicFieldTypeEnum)[keyof typeof BasicFieldTypeEnum];
 
-
-export const basicComponentPageEnum = {
-  p: "p",
-} as const;
-
-export type basicComponentPageType =
-  (typeof basicComponentPageEnum)[keyof typeof basicComponentPageEnum];
-
 export interface MultipleChoisesInterface {
   text: string
   questionAnswareId: string
@@ -42,12 +34,6 @@ export interface MultipleChoisesInterface {
 export interface BasicFieldInterfaceComponent extends DefaultElementType {
   type?: BasicFieldType;
   choises?: Array<MultipleChoisesInterface>
-  value?: string
-  response?: string
-}
-
-export interface BasicPageInterfaceComponent extends DefaultElementType {
-  type?: basicComponentPageType;
   value?: string
   response?: string
 }

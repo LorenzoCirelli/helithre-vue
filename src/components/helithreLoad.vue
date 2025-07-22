@@ -1,6 +1,5 @@
 <template>
-  <component @submitEvent="emitEvent" :is="wrapperInUse.compType" :derivatedChildrens="wrapperInUse.compProps"
-    :name="helithreJson.name" />
+  <component :is="wrapper.getComponent()"></component>
 </template>
 
 <script lang="ts" setup>
@@ -22,40 +21,45 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { type Component } from 'vue';
-import type { FormHelitreJSON } from '../types/helitreJSON';
+import { FormWrapper } from '../composable/wrapper/form/formWrapper';
+import { PageWrapper } from '../composable/wrapper/page/pageWrapper';
+import { BasicFieldInterfaceComponent } from '../types/fields/basicField';
+import type { HelithreLoadType } from '../types/helitreJSON';
+import { BasicPageComponent } from '../types/pages/confPage';
 import { wrapperTypeEnum } from '../types/wrapper';
-import { PageWrapper, SaveWrapper } from '../composable/wrapper/basicWrapper';
-import type { BaseResponse } from '../types/responses/baseResponse';
-import { HelithreForm, HelithrePage } from './wrapper/wrapper';
 
 const props = defineProps<{
-  //TODO: better type
-  helithreJson: FormHelitreJSON
+  helithreJson: HelithreLoadType
 }>();
 
+let wrapper: FormWrapper | PageWrapper;
+//When props are imported identify if the wrapper is page or a form
+(() => {
+  let wrapperType: string = props?.helithreJson?.wrapper;
 
-const wrapperInUse: {
-  compType: Component,
-  compProps: SaveWrapper | PageWrapper | null
-  compResponses?: Array<BaseResponse> | null
-} = {
-  compType: HelithrePage,
-  compProps: null,
-  compResponses: null
-};
+  if (typeof (wrapperType) != "string") {
+    throw new Error("Wrapper type need to be a string");
+  }
+  wrapperType = wrapperType.trim();
 
-const wrapperType: string = props.helithreJson.wrapper.trim();
-if (wrapperType === wrapperTypeEnum.form) {
-  wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses, props.helithreJson.name);
-  wrapperInUse.compType = HelithreForm;
-  wrapperInUse.compResponses = props.helithreJson.responses
-} else if (wrapperType === wrapperTypeEnum.page) {
-  wrapperInUse.compProps = new PageWrapper(props.helithreJson.childrens, props.helithreJson.name);
-  wrapperInUse.compType = HelithrePage;
-} else {
-  throw new Error(`Invalid wrapper: ${props.helithreJson.wrapper}`);
-}
+  if (wrapperType == wrapperTypeEnum.form) {
+    //filter only Form Childrens
+    const formComponents = props.helithreJson.childrens.filter(
+      (c): c is BasicFieldInterfaceComponent => c.type !== "div"
+    );
+    wrapper = new FormWrapper(formComponents, props.helithreJson.responses, props.helithreJson.name);
+  } else if (wrapperType == wrapperTypeEnum.page) {
+    //filter only Page Childrens
+    const pageComponents = props.helithreJson.childrens.filter(
+      (c): c is BasicPageComponent => c.type !== "div"
+    );
+    wrapper = new PageWrapper(pageComponents, props.helithreJson.name);
+  } else {
+    throw new Error(`Wrapper type is not accepted, only ${wrapperTypeEnum.form} and ${wrapperTypeEnum.page} are accepted`);
+  }
+
+})()
+
 
 //manage emits to helithreLoad
 const emit = defineEmits(['helitreEvent']);
