@@ -49,4 +49,10 @@ export class BasicWrapper {
       };
     });
   }
+
+
+  //added for page wrapper edit
+  get getName() {
+    return this.name
+  }
 }

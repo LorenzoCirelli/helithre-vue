@@ -1,23 +1,15 @@
 <template>
-    {{ name }}
-    {{ derivatedChildrens }}
+    {{ wrapper }}
 </template>
 
 <script lang="ts" setup>
 
 ////////////////////////////////////////////////////////////////////////////
-//////// This page create the form and manage operations on it /////////////
+//////// This page create the page and manage operations on it /////////////
 ///////////////////////////////////////////////////////////////////////////
 
-import { type PropType } from 'vue'
-import { BasicWrapper } from '../../composable/wrapper/basicWrapper'
-
-const props = defineProps({
-    derivatedChildrens: {
-        type: Object as PropType<BasicWrapper>,
-        required: true
-    },
-    name: { type: String, required: false, default: '' },
-})
+import { FormWrapper } from '../../composable/wrapper/form/formWrapper'
+const wrapper = defineProps<{ wrapper: FormWrapper }>()
+const emit = defineEmits(['submitEvent'])
 
 </script>
