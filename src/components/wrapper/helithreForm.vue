@@ -1,7 +1,8 @@
 <template>
-    <form-element @formChange="formChangeEventHandler" :name="name">
-        <div v-for="children, key in derivatedChildrens?.getLoadArray" :key="key">
-            <component :is="componentToRender(children.type)" :conf="children" :response="derivatedChildrens?.responseForId(children.id)">
+    <form-element @formChange="formChangeEventHandler" :name="wrapper.getName">
+        <div v-for="children, key in wrapper?.getLoadArray" :key="key">
+            <component :is="componentToRender(children.type)" :conf="children"
+                :response="wrapper?.responseForId(children.id)">
             </component>
         </div>
 
@@ -11,23 +12,15 @@
 <script lang="ts" setup>
 
 ////////////////////////////////////////////////////////////////////////////
-//////// This page create the form and manage operations on it /////////////
+//////// This page create the form and manage operations on it ////////////
 ///////////////////////////////////////////////////////////////////////////
 
-import { type PropType } from 'vue'
 import { validatedResult } from '../../composable/utils'
-import { SaveWrapper } from '../../composable/wrapper/basicWrapper'
 import { componentsMap } from '../../composable/form/formComponents'
 import formElement from '../form/formElement.vue'
+import { FormWrapper } from '../../composable/wrapper/form/formWrapper';
 
-const props = defineProps({
-    derivatedChildrens: {
-        type: Object as PropType<SaveWrapper>,
-        required: true
-    },
-    name: { type: String, required: false, default: '' },
-})
-const derivatedChildrens = props.derivatedChildrens;
+const { wrapper } = defineProps<{ wrapper: FormWrapper }>();
 
 //define emits
 const emit = defineEmits(['submitEvent']);
@@ -46,15 +39,15 @@ const componentToRender = (type: string | undefined) => {
 
 //read form edit
 const formChangeEventHandler = (formData: FormData) => {
-    derivatedChildrens?.clearSaved();
+    wrapper?.clearSaved();
     formData.forEach((value, key) => {
         const formChangeValue = { id: key, value: String(value) };
-        if (derivatedChildrens?.autoSetItem(formChangeValue.id, formChangeValue.value)) {
-            derivatedChildrens.setResponsesMap = { id: formChangeValue.id, value: formChangeValue.value };
+        if (wrapper?.autoSetItem(formChangeValue.id, formChangeValue.value)) {
+            wrapper.setResponsesMap = { id: formChangeValue.id, value: formChangeValue.value };
         }
     });
     try {
-        emit('submitEvent', validatedResult(derivatedChildrens?.createResultToEmit()))
+        emit('submitEvent', validatedResult(wrapper?.createResultToEmit()))
     } catch (e) {
         console.error(`Error genereting event action, open an issue on https://github.com/LorenzoCirelli/helithre-vue/issues. ${e}`);
     }

@@ -26,7 +26,6 @@ export const BasicFieldTypeEnum = {
 export type BasicFieldType =
   (typeof BasicFieldTypeEnum)[keyof typeof BasicFieldTypeEnum];
 
-
 export interface MultipleChoisesInterface {
   text: string
   questionAnswareId: string

@@ -5,7 +5,6 @@ export namespace save {
   }
 }
 
-
 export const wrapperTypeEnum = {
   form: "form",
   page: "page",
