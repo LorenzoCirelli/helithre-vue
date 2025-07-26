@@ -1,4 +1,3 @@
-import { HelithreForm } from "../../../components/wrapper/wrapper";
 import { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
 import { BaseResponse } from "../../../types/responses/baseResponse";
 import { save } from "../../../types/wrapper";
@@ -34,7 +33,7 @@ export class FormWrapper extends BasicWrapper {
   }
 
   getComponent() {
-    return HelithreForm;
+    return 'form';
   }
 
   get getResponsesMap() {

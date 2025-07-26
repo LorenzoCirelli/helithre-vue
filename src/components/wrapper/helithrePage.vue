@@ -8,8 +8,8 @@
 //////// This page create the page and manage operations on it /////////////
 ///////////////////////////////////////////////////////////////////////////
 
-import { FormWrapper } from '../../composable/wrapper/form/formWrapper'
-const wrapper = defineProps<{ wrapper: FormWrapper }>()
+import { PageWrapper } from '../../composable/wrapper/page/pageWrapper';
+const wrapper = defineProps<{ wrapper: PageWrapper }>()
 const emit = defineEmits(['submitEvent'])
 
 </script>

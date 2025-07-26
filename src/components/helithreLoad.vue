@@ -1,9 +1,6 @@
 <template>
-  <component
-    :is="wrapper.getComponent()"
-    :wrapper="wrapper"
-    @submitEvent="emitEvent"
-  />
+  <HelithreForm v-if="wrapper.getComponent() === 'form'" :wrapper="wrapper as FormWrapper" @submitEvent="emitEvent" />
+  <HelithrePage v-else :wrapper="wrapper as PageWrapper"/>
 </template>
 
 <script lang="ts" setup>
@@ -13,6 +10,8 @@ import type { HelithreLoadType } from '../types/helitreJSON'
 import { wrapperTypeEnum } from '../types/wrapper'
 import { BasicFieldInterfaceComponent } from '../types/fields/basicField'
 import { BasicPageComponent } from '../types/pages/confPage'
+import HelithreForm from './wrapper/helithreForm.vue'
+import HelithrePage from './wrapper/helithrePage.vue'
 
 const props = defineProps<{ helithreJson: HelithreLoadType }>()
 const emit = defineEmits(['helitreEvent'])
