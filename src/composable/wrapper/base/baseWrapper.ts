@@ -9,11 +9,9 @@ export class BasicWrapper {
   //item that need to be loaded
   protected loadMap: Map<string, wrapperItemOptions.loadObjType>;
   constructor(
-    childrens: Array<BasicFieldInterfaceComponent | BasicPageComponent>,
     name: string | undefined
   ) {
     this.loadMap = new Map();
-    this.parseChildrens(childrens);
     this.name = validatedResult(name);
   }
 
@@ -36,19 +34,7 @@ export class BasicWrapper {
     this.loadMap.set(loadItem.id, loadItem.value);
   }
 
-  parseChildrens(childrens: Array<BasicFieldInterfaceComponent>) {
-    childrens.forEach((children) => {
-      this.setLoadMap = {
-        id: children.id,
-        value: {
-          text: children.text,
-          type: children.type!,
-          choises:
-            children?.choises?.length != undefined ? children.choises : null,
-        },
-      };
-    });
-  }
+  
 
 
   //added for page wrapper edit

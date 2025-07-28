@@ -19,7 +19,9 @@ export class FormWrapper extends BasicWrapper {
     responses: Array<BaseResponse> | undefined,
     name: string
   ) {
-    super(childrens, name);
+    super(name);
+    //Parse childrens for the form
+    this.parseChildrens(childrens);
     this.responsesMap = new Map();
     if (responses != null && responses != undefined) {
       responses.forEach((response: BaseResponse) => {
@@ -33,7 +35,7 @@ export class FormWrapper extends BasicWrapper {
   }
 
   getComponent() {
-    return 'form';
+    return "form";
   }
 
   get getResponsesMap() {
@@ -122,5 +124,19 @@ export class FormWrapper extends BasicWrapper {
       this.name
     );
     return objToEmit.getObjToEmit;
+  }
+
+  parseChildrens(childrens: Array<BasicFieldInterfaceComponent>) {
+    childrens.forEach((children) => {
+      this.setLoadMap = {
+        id: children.id,
+        value: {
+          text: children.text,
+          type: children.type!,
+          choises:
+            children?.choises?.length != undefined ? children.choises : null,
+        },
+      };
+    });
   }
 }
