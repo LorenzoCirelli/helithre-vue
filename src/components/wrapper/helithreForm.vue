@@ -17,7 +17,7 @@
 
 import { validatedResult } from '../../composable/utils'
 import { componentsMap } from '../../composable/form/formComponents'
-import formElement from '../form/formElement.vue'
+import formElement from '../form/FormElement.vue'
 import { FormWrapper } from '../../composable/wrapper/form/formWrapper';
 
 const { wrapper } = defineProps<{ wrapper: FormWrapper }>();

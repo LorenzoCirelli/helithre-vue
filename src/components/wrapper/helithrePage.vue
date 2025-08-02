@@ -1,5 +1,7 @@
 <template>
-    {{ wrapper }}
+    <PageElement>
+        {{ wrapper }}
+    </PageElement>
 </template>
 
 <script lang="ts" setup>
@@ -9,6 +11,7 @@
 ///////////////////////////////////////////////////////////////////////////
 
 import { PageWrapper } from '../../composable/wrapper/page/pageWrapper';
+import PageElement from '../page/PageElement.vue';
 const wrapper = defineProps<{ wrapper: PageWrapper }>()
 const emit = defineEmits(['submitEvent'])
 
