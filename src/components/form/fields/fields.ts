@@ -17,12 +17,12 @@
  */
 
 import { defineAsyncComponent, defineComponent, h, type PropType } from "vue";
-const basicInput = defineAsyncComponent(() => import("./basicInput.vue"));
+const basicInput = defineAsyncComponent(() => import("./BasicInput.vue"));
 import type { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
 import { BasicFieldTypeEnum } from "../../../types/fields/basicField";
 import { validatedResult } from "../../../composable/utils";
-import checkBoxInput from "./checkBoxInput.vue";
-import selectInput from "./selectInput.vue";
+import checkBoxInput from "./CheckBoxInput.vue";
+import selectInput from "./SelectInput.vue";
 //default config
 const baseObjConf = {
   name: "BasicInput",

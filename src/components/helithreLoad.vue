@@ -1,66 +1,34 @@
 <template>
-  <component @submitEvent="emitEvent" :is="wrapperInUse.compType" :derivatedChildrens="wrapperInUse.compProps"
-    :name="helithreJson.name" />
+  <HelithreForm v-if="wrapper.getComponent() === 'form'" :wrapper="wrapper as FormWrapper" @submitEvent="emitEvent" />
+  <HelithrePage v-else :wrapper="wrapper as PageWrapper"/>
 </template>
 
 <script lang="ts" setup>
-/*
- * helithre-vue - a library written in Vue.js
- * Copyright (C) 2025 Lorenzo Cirelli
- *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
- */
+import { FormWrapper } from '../composable/wrapper/form/formWrapper'
+import { PageWrapper } from '../composable/wrapper/page/pageWrapper'
+import type { HelithreLoadType } from '../types/helitreJSON'
+import { wrapperTypeEnum } from '../types/wrapper'
+import { BasicPageComponent } from '../types/pages/confPage'
+import { BasicFieldInterfaceComponent } from '../types/fields/basicField'
+import HelithreForm from './wrapper/HelithreForm.vue'
+import HelithrePage from './wrapper/HelithrePage.vue'
 
-import { type Component } from 'vue';
-import type { FormHelitreJSON } from '../types/helitreJSON';
-import { wrapperTypeEnum } from '../types/wrapper';
-import { BasicWrapper, SaveWrapper } from '../composable/wrapper/basicWrapper';
-import type { BaseResponse } from '../types/responses/baseResponse';
-import { HelithreForm, HelithrePage } from './wrapper/wrapper';
+const {helithreJson} = defineProps<{ helithreJson: HelithreLoadType }>()
+const emit = defineEmits(['helitreEvent'])
 
-const props = defineProps<{
-  //TODO: better type
-  helithreJson: FormHelitreJSON
-}>();
+let wrapper: FormWrapper | PageWrapper
 
-
-const wrapperInUse: {
-  compType: Component,
-  compProps: SaveWrapper | BasicWrapper | null
-  compResponses?: Array<BaseResponse> | null
-} = {
-  compType: HelithrePage,
-  compProps: null,
-  compResponses: null
-};
-
-const wrapperType: string = props.helithreJson.wrapper.trim();
+const wrapperType = helithreJson.wrapper?.trim()
 if (wrapperType === wrapperTypeEnum.form) {
-  wrapperInUse.compProps = new SaveWrapper(props.helithreJson.childrens, props.helithreJson.responses, props.helithreJson.name);
-  wrapperInUse.compType = HelithreForm;
-  wrapperInUse.compResponses = props.helithreJson.responses
+  wrapper = new FormWrapper(helithreJson.childrens as BasicFieldInterfaceComponent[], helithreJson.responses, helithreJson.name)
 } else if (wrapperType === wrapperTypeEnum.page) {
-  wrapperInUse.compProps = new BasicWrapper(props.helithreJson.childrens, props.helithreJson.name);
-  wrapperInUse.compType = HelithrePage;
+
+  wrapper = new PageWrapper(helithreJson.childrens as BasicPageComponent[], helithreJson.name)
 } else {
-  throw new Error(`Invalid wrapper: ${props.helithreJson.wrapper}`);
+  throw new Error(`Invalid wrapper type`)
 }
 
-//manage emits to helithreLoad
-const emit = defineEmits(['helitreEvent']);
-
-const emitEvent = (event: unknown) => {
+function emitEvent(event: unknown) {
   emit('helitreEvent', event)
 }
 </script>

@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
-import helithreLoad from "../helithreLoad.vue";
+import helithreLoad from "../HelithreLoad.vue";
 
 describe("HelithreLoad component", () => {
   it("loads wrapper if the type is correct without errors", () => {

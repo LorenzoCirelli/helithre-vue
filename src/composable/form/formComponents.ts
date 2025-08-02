@@ -20,7 +20,7 @@ import {
   selectInput,
 } from "../../components/form/fields/fields";
 
-export const componentsMap = new Map<string, Component>([
+export const formComponentsMap = new Map<string, Component>([
   ["text", textInput],
   ["number", numberInput],
   ["date", dateInput],
