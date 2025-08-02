@@ -2,18 +2,25 @@ import type {
   BasicFieldType,
   MultipleChoisesInterface,
 } from "../../types/fields/basicField";
+import { BasicPageType } from "../../types/pages/pagesTypes";
 
 export namespace wrapperItemOptions {
-  export type loadObjType = {
+  export type loadObjTypeField = {
     text: string;
-    type: BasicFieldType ;
+    type: BasicFieldType;
     choises?: null | Array<MultipleChoisesInterface>;
   };
 
-  export interface LoadType {
+  export type loadObjTypePage = {
+    text: string;
+    type: BasicPageType;
+  };
+  export interface LoadTypeField {
     id: string;
-    value: loadObjType;
+    value: loadObjTypeField;
+  }
+  export interface LoadTypePage {
+    id: string;
+    value: loadObjTypePage;
   }
 }
-
-

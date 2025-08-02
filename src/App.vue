@@ -3,7 +3,7 @@ import helithreLoad from './index';
 </script>
 
 <template>
-    <helithreLoad :helithreJson="{
+    <!-- <helithreLoad :helithreJson="{
         name: 'RegisterForm',
         wrapper: 'form',
         childrens: [
@@ -69,16 +69,17 @@ import helithreLoad from './index';
                 value: 'true'
             }
         ]
-    }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad>
+    }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad> -->
 
-    <!-- <helithreLoad :helithre-json="{
+    <helithreLoad :helithre-json="{
         name: 'FirstPage',
         wrapper: 'page',
         childrens: [
             {
                 text: 'My first text',
                 id: 'first_component',
+                type:'text'
             }
         ]
-    }"></helithreLoad> -->
+    }"></helithreLoad>
 </template>

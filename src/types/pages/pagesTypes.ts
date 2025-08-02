@@ -1,7 +1,5 @@
 export const BasicPageType = {
-  p: "p",
-  div: "div",
-  nav: "nav"
+  text:"text"
 } as const;
 
 export type BasicPageType =

@@ -2,6 +2,7 @@ import { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
 import { BaseResponse } from "../../../types/responses/baseResponse";
 import { save } from "../../../types/wrapper";
 import { BasicWrapper } from "../base/baseWrapper";
+import { wrapperItemOptions } from "../basicWrapper";
 import { ClassToEmitSaveWrapper } from "../emit/emitObject";
 
 export class FormWrapper extends BasicWrapper {
@@ -124,6 +125,10 @@ export class FormWrapper extends BasicWrapper {
       this.name
     );
     return objToEmit.getObjToEmit;
+  }
+
+  set setLoadMap(loadItem: wrapperItemOptions.LoadTypeField) {
+    this.loadMap.set(loadItem.id, loadItem.value);
   }
 
   parseChildrens(childrens: Array<BasicFieldInterfaceComponent>) {

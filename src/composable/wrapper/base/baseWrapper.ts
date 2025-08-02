@@ -1,5 +1,4 @@
 import { BasicFieldInterfaceComponent } from "../../../types/fields/basicField";
-import { BasicPageComponent } from "../../../types/pages/confPage";
 import { validatedResult } from "../../utils";
 import { wrapperItemOptions } from "../basicWrapper";
 
@@ -7,10 +6,8 @@ export class BasicWrapper {
   //name of the wrapper
   protected name: string;
   //item that need to be loaded
-  protected loadMap: Map<string, wrapperItemOptions.loadObjType>;
-  constructor(
-    name: string | undefined
-  ) {
+  protected loadMap: Map<string, wrapperItemOptions.loadObjTypeField | wrapperItemOptions.loadObjTypePage>;
+  constructor(name: string | undefined) {
     this.loadMap = new Map();
     this.name = validatedResult(name);
   }
@@ -30,15 +27,7 @@ export class BasicWrapper {
     return elementToLoad;
   }
 
-  set setLoadMap(loadItem: wrapperItemOptions.LoadType) {
-    this.loadMap.set(loadItem.id, loadItem.value);
-  }
-
-  
-
-
-  //added for page wrapper edit
   get getName() {
-    return this.name
+    return this.name;
   }
 }
