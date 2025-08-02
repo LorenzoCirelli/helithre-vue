@@ -16,7 +16,7 @@
 ///////////////////////////////////////////////////////////////////////////
 
 import { validatedResult } from '../../composable/utils'
-import { componentsMap } from '../../composable/form/formComponents'
+import { formComponentsMap } from '../../composable/form/formComponents'
 import formElement from '../form/FormElement.vue'
 import { FormWrapper } from '../../composable/wrapper/form/formWrapper';
 
@@ -30,7 +30,7 @@ const componentToRender = (type: string | undefined) => {
     if (type == undefined) {
         throw new Error("Undefined type for component type is not accepted");
     }
-    const component = componentsMap.get(validatedResult(type))
+    const component = formComponentsMap.get(validatedResult(type))
     if (component == undefined) {
         throw new Error("The required component cannot be render, because is not in the map");
     }
