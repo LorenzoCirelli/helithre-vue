@@ -3,7 +3,7 @@ import helithreLoad from './index';
 </script>
 
 <template>
-    <!-- <helithreLoad :helithreJson="{
+    <helithreLoad :helithreJson="{
         name: 'RegisterForm',
         wrapper: 'form',
         childrens: [
@@ -41,13 +41,13 @@ import helithreLoad from './index';
                 text: 'Profile type',
                 id: 'user_profile_type',
                 type: 'select',
-                choises: [{
+                choices: [{
                     text: 'Admin',
-                    questionAnswareId: 'ADMIN'
+                    questionAnswerId: 'ADMIN'
                 },
                 {
                     text: 'User',
-                    questionAnswareId: 'USER'
+                    questionAnswerId: 'USER'
                 }]
             }
         ],
@@ -69,7 +69,7 @@ import helithreLoad from './index';
                 value: 'true'
             }
         ]
-    }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad> -->
+    }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad>
 
     <helithreLoad :helithre-json="{
         name: 'FirstPage',

@@ -1,6 +1,6 @@
 import type {
   BasicFieldType,
-  MultipleChoisesInterface,
+  MultiplechoicesInterface,
 } from "../../types/fields/basicField";
 import { BasicPageType } from "../../types/pages/pagesTypes";
 
@@ -8,7 +8,7 @@ export namespace wrapperItemOptions {
   export type loadObjTypeField = {
     text: string;
     type: BasicFieldType;
-    choises?: null | Array<MultipleChoisesInterface>;
+    choices?: null | Array<MultiplechoicesInterface>;
   };
 
   export type loadObjTypePage = {

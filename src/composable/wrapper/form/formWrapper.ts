@@ -138,8 +138,8 @@ export class FormWrapper extends BasicWrapper {
         value: {
           text: children.text,
           type: children.type!,
-          choises:
-            children?.choises?.length != undefined ? children.choises : null,
+          choices:
+            children?.choices?.length != undefined ? children.choices : null,
         },
       };
     });

@@ -26,14 +26,14 @@ export const BasicFieldTypeEnum = {
 export type BasicFieldType =
   (typeof BasicFieldTypeEnum)[keyof typeof BasicFieldTypeEnum];
 
-export interface MultipleChoisesInterface {
+export interface MultiplechoicesInterface {
   text: string
-  questionAnswareId: string
+  questionAnswerId: string
 }
 
 export interface BasicFieldInterfaceComponent extends DefaultElementType {
   type?: BasicFieldType;
-  choises?: Array<MultipleChoisesInterface>
+  choices?: Array<MultiplechoicesInterface>
   value?: string
   response?: string
 }
