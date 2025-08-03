@@ -16,7 +16,8 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-// Manage export of components
-import helithreLoad from './components/HelithreLoad.vue';
-
-export default helithreLoad;
+import { defineAsyncComponent } from "vue";
+import * as elements from "./elements/elements";
+const pageElements = defineAsyncComponent(() => import("./PageElement.vue"));
+export { elements };
+export { pageElements };

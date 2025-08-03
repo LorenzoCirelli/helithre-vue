@@ -41,13 +41,13 @@ import helithreLoad from './index';
                 text: 'Profile type',
                 id: 'user_profile_type',
                 type: 'select',
-                choises: [{
+                choices: [{
                     text: 'Admin',
-                    questionAnswareId: 'ADMIN'
+                    questionAnswerId: 'ADMIN'
                 },
                 {
                     text: 'User',
-                    questionAnswareId: 'USER'
+                    questionAnswerId: 'USER'
                 }]
             }
         ],
@@ -70,4 +70,43 @@ import helithreLoad from './index';
             }
         ]
     }" @helitreEvent="(event: object) => { console.log(event) }"></helithreLoad>
+
+    <helithreLoad :helithre-json="{
+        name: 'FirstPage',
+        wrapper: 'page',
+        childrens: [
+            {
+                text: 'My text',
+                id: 'first_text',
+                type: 'text',
+            },
+            {
+                text: 'My video',
+                id: 'first_video',
+                src: '',
+                type: 'video',
+            },
+            {
+                text: 'My image',
+                id: 'first_image',
+                src: '',
+                type: 'image',
+            },
+            {
+                text: 'My list',
+                id: 'first_list',
+                type: 'list',
+                elements: [{
+                    id: 'first',
+                    value: 'Beautiful'
+                }]
+            },
+            {
+                text: 'My link',
+                id: 'first_link',
+                src: '',
+                type: 'link',
+            }
+        ]
+    }"></helithreLoad>
 </template>

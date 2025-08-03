@@ -2,8 +2,8 @@
     <label :for="selectInpObj.id">{{ selectInpObj.text }}</label>
 
     <select :name="selectInpObj.id" :id="selectInpObj.id">
-        <option :value="choise.questionAnswareId" v-for="choise, key in selectInpObj.getChoises" :key="key"
-            :selected="response == choise.questionAnswareId">{{ choise.text }}</option>
+        <option :value="choise.questionAnswerId" v-for="choise, key in selectInpObj.getchoices" :key="key"
+            :selected="response == choise.questionAnswerId">{{ choise.text }}</option>
     </select>
 </template>
 <script lang="ts" setup>
@@ -27,5 +27,5 @@ const props = defineProps({
     },
 })
 
-const selectInpObj = new MultiInput(props.conf?.text, props.conf?.id, props.conf?.type, props.conf?.choises);
+const selectInpObj = new MultiInput(props.conf?.text, props.conf?.id, props.conf?.type, props.conf?.choices);
 </script>

@@ -76,3 +76,48 @@
 .helithreForm button[type="submit"]:hover {
   background-color: #005a8d;
 }
+.helithrePageImage {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.helithrePageLink {
+  color: #0066cc;
+  text-decoration: underline;
+  font-weight: 600;
+  font-size: 1.125rem;
+  transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.helithrePageList {
+  list-style: disc inside;
+  padding: 1rem;
+  background-color: #f4f4f4;
+  border-left: 4px solid #0066cc;
+  border-radius: 4px;
+  font-size: 1.05rem;
+  color: #2e2e2e;
+}
+.helithrePageList li {
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.helithrePageText {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: #242424;
+  margin: 1rem 0;
+}
+
+.helithrePageVideo {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  background-color: #000;
+}

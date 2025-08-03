@@ -1,7 +1,7 @@
 import { DefaultElement } from "../types/basic";
 import {
   BasicFieldTypeEnum,
-  type MultipleChoisesInterface,
+  type MultiplechoicesInterface,
 } from "../types/fields/basicField";
 import { validatedResult } from "./utils";
 
@@ -28,21 +28,21 @@ export class BasicInput extends DefaultElement {
 }
 
 export class MultiInput extends BasicInput {
-  choises: Array<MultipleChoisesInterface>;
+  choices: Array<MultiplechoicesInterface>;
   constructor(
     text: string | undefined,
     id: string | undefined,
     type: string | undefined,
-    choises: Array<MultipleChoisesInterface> | null | undefined
+    choices: Array<MultiplechoicesInterface> | null | undefined
   ) {
     super(text, id, type);
-    if (choises === null) {
-      throw new Error("No choises set for multiple option input");
+    if (choices === null) {
+      throw new Error("No choices set for multiple option input");
     }
-    this.choises = validatedResult(choises);
+    this.choices = validatedResult(choices);
   }
 
-  get getChoises() {
-    return this.choises;
+  get getchoices() {
+    return this.choices;
   }
 }
