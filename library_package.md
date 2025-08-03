@@ -72,6 +72,7 @@ Forms allow users to input data through various field types. When users interact
 </template>
 
 <script setup>
+import HelithreLoad from 'helithre-vue'
 const formConfig = {
   name: 'contactForm',
   wrapper: 'form',
@@ -363,6 +364,7 @@ Pages display content blocks like text, images, videos, and lists. Unlike forms,
 </template>
 
 <script setup>
+import HelithreLoad from 'helithre-vue'
 const pageConfig = {
   name: 'welcomePage',
   wrapper: 'page',
