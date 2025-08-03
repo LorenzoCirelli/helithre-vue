@@ -17,6 +17,6 @@
  */
 
 // Manage export of components
-import helithreLoad from './components/HelithreLoad.vue';
+import HelithreLoad from "./components/HelithreLoad.vue";
 
-export default helithreLoad;
+export default HelithreLoad;
