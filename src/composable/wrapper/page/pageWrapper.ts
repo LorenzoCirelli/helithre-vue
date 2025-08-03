@@ -21,7 +21,11 @@ export class PageWrapper extends BasicWrapper {
       if (children.type != null && children.text != null) {
         const obj = {
           id: children.id,
-          value: { text: children?.text, type: children?.type },
+          value: {
+            text: children?.text,
+            type: children?.type,
+            elements: children?.elements,
+          },
         };
         this.setLoadMap = obj;
       } else {

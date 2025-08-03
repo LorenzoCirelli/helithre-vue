@@ -76,9 +76,13 @@ import helithreLoad from './index';
         wrapper: 'page',
         childrens: [
             {
-                text: 'My first text',
+                text: 'My first list',
                 id: 'first_component',
-                type:'text'
+                type:'list',
+                elements: [{
+                    id: 'test1',
+                    value: 'test1'
+                }]
             }
         ]
     }"></helithreLoad>

@@ -1,15 +1,13 @@
 <template>
-    <p :id="id" class="helithrePageText">{{ text }}</p>
+    <p :id="conf?.id" class="helithrePageText">{{ conf?.text }}</p>
 </template>
 <script lang="ts" setup>
-const { text, id } = defineProps({
-    text: {
-        type: String,
-        required: true
-    },
-    id: {
-        type: String,
-        required: true
+import { PropType } from 'vue';
+import { BasicPageComponent } from '../../../types/pages/confPage';
+
+const { conf } = defineProps({
+    conf: {
+        type: Object as PropType<BasicPageComponent>
     }
 })
 </script>

@@ -1,2 +1,3 @@
 import TextElement from "./TextElement.vue";
-export {TextElement}
+import ListElement from "./ListElement.vue";
+export {TextElement, ListElement}

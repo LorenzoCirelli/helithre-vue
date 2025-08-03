@@ -1,7 +1,7 @@
 <template>
     <PageElement>
         <span v-for="pageElement, key in wrapper?.getLoadArray" :key="key">
-            <component :is="componentToRender(pageElement.type)" :text="pageElement.text" :id="pageElement.id">
+            <component :is="componentToRender(pageElement.type)" :conf="pageElement">
             </component>
         </span>
     </PageElement>
