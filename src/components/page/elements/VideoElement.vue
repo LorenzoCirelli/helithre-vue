@@ -1,5 +1,5 @@
 <template>
-    <video controls>
+    <video controls :id="conf?.id" class="helithrePageVideo">
         <source :src="videoUrl" type="video/mp4">
         Error: HTML video element is not suppoter by your browser, please try to update!
     </video>

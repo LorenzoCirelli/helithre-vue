@@ -1,7 +1,7 @@
 <template>
     <TextElement :conf="textElementConf"></TextElement>
-    <ul>
-        <li v-for="value in conf?.elements" :key="value.id">{{ value.value }}</li>
+    <ul class="helithrePageList">
+        <li v-for="value in conf?.elements" :key="value.id" :id="conf?.id">{{ value.value }}</li>
     </ul>
 </template>
 

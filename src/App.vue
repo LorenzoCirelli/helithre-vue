@@ -78,7 +78,34 @@ import helithreLoad from './index';
             {
                 text: 'My text',
                 id: 'first_text',
-                type:'text',
+                type: 'text',
+            },
+            {
+                text: 'My video',
+                id: 'first_video',
+                src: '',
+                type: 'video',
+            },
+            {
+                text: 'My image',
+                id: 'first_image',
+                src: '',
+                type: 'image',
+            },
+            {
+                text: 'My list',
+                id: 'first_list',
+                type: 'list',
+                elements: [{
+                    id: 'first',
+                    value: 'Beautiful'
+                }]
+            },
+            {
+                text: 'My link',
+                id: 'first_link',
+                src: '',
+                type: 'link',
             }
         ]
     }"></helithreLoad>

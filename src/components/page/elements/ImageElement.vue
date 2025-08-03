@@ -1,5 +1,5 @@
 <template>
-    <img :src="imgUrl" :alt="conf?.text" :title="conf?.text"></img>
+    <img :src="imgUrl" :alt="conf?.text" :title="conf?.text" :id="conf?.id" class="helithrePageImage"></img>
 </template>
 <script lang="ts" setup>
 import { computed, PropType } from 'vue';
