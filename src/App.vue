@@ -75,15 +75,7 @@ import helithreLoad from './index';
         name: 'FirstPage',
         wrapper: 'page',
         childrens: [
-            {
-                text: 'My first list',
-                id: 'first_component',
-                type:'list',
-                elements: [{
-                    id: 'test1',
-                    value: 'test1'
-                }]
-            }
+        
         ]
     }"></helithreLoad>
 </template>

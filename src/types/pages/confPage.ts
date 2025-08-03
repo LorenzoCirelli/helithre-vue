@@ -7,6 +7,7 @@ export interface ElementType {
 }
 export interface BasicPageComponent extends DefaultElementType {
   type: BasicPageType
+  src?:string
   elements?: Array<ElementType>
 }
 

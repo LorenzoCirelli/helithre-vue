@@ -1,3 +1,4 @@
 import TextElement from "./TextElement.vue";
 import ListElement from "./ListElement.vue";
-export {TextElement, ListElement}
+import ImageElement from "./ImageElement.vue";
+export {TextElement, ListElement, ImageElement}

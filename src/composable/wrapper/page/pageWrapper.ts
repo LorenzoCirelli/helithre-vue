@@ -25,6 +25,7 @@ export class PageWrapper extends BasicWrapper {
             text: children?.text,
             type: children?.type,
             elements: children?.elements,
+            src: children?.src
           },
         };
         this.setLoadMap = obj;
