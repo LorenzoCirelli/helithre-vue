@@ -75,7 +75,12 @@ import helithreLoad from './index';
         name: 'FirstPage',
         wrapper: 'page',
         childrens: [
-        
+            {
+                text: 'My video',
+                id: 'first_video',
+                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
+                type:'video',
+            }
         ]
     }"></helithreLoad>
 </template>
