@@ -3,8 +3,6 @@ export const BasicPageType = {
   list:"list",
   image:"image",
   video:"video",
-  details:"details",
-  table:"table",
   link:"link"
 } as const;
 

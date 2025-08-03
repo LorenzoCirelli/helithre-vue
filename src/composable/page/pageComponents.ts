@@ -5,5 +5,6 @@ export const pageComponentsMap = new Map<string, Component>([
   ["text", elements.TextElement],
   ["list", elements.ListElement],
   ["image", elements.ImageElement],
-  ["video", elements.VideoElement]
+  ["video", elements.VideoElement],
+  ["link", elements.LinkElement]
 ]);

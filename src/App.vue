@@ -76,10 +76,9 @@ import helithreLoad from './index';
         wrapper: 'page',
         childrens: [
             {
-                text: 'My video',
-                id: 'first_video',
-                src: 'https://www.w3schools.com/html/mov_bbb.mp4',
-                type:'video',
+                text: 'My text',
+                id: 'first_text',
+                type:'text',
             }
         ]
     }"></helithreLoad>
