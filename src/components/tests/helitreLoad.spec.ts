@@ -57,7 +57,7 @@ describe("HelithreLoad component", () => {
         },
       },
     });
-  }).toThrow("Invalid wrapper: notAValidWrapper");
+  }).toThrow("Invalid wrapper type");
 
   consoleErrorMock.mockRestore();
 });
